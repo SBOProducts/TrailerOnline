@@ -2,39 +2,30 @@
     ViewBag.Title = "Trailer Online";
 }
 
-@*
-<div class="row">
-    <div class="large-4 columns">
-        <img src="@Url.Content("~/images/box-closed.png")" alt="Create a Website" />
-    </div>
 
-    <div class="large-4 columns">
-        <img style="height:233px;" src="@Url.Content("~/images/traileronline.jpg")" alt="Trailer Online" />
-    </div>
 
-    <div class="large-4 columns">
-        <img src="@Url.Content("~/images/box-open.png")" alt="Log Into Your Website" />
-    </div>
-</div>
-*@
+
 
 <div class="row">
     <div class="large-4 medium-5 columns">
-        <h2>Login</h2>
+        <h3>Login</h3>
         <p>Get back into your website, login below.</p>
         @Html.Partial("_Login")
     </div>
     <div class="large-6 medium-5 medium-offset-2 large-offset-2 columns">
-        <div class="callout panel radius">
-            <h2>Free Demo</h2>
+        <div class="callout panel">
+            <h3>Free Demo</h3>
             <p>The best way to know if you like something is to try it.</p>
-            <p><em>Create a website now and use it free for 30 days</em></p>
+            <p><em>Create a website now and use it free for 30 days.</em></p>
+            <p>
+                After 30 days you may keep your website including any changes you make for an unbeatable price: $1500 the first year, $250 each additional year. It's that easy.
+            </p>
             @Html.Partial("_CreateDemo")
         </div>
     </div>
 </div>
 
-<div class="bg-orange">
+<div class="bg orange">
     <div class="row">
         <div class="large-6 columns">
             
@@ -58,6 +49,30 @@
             <div class="panel">
                 <iframe width="420" height="315" src="//www.youtube.com/embed/-WWppWbtko4" frameborder="0" allowfullscreen=""></iframe>
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg blue">
+    <div class="row">
+        <div class="large-6 columns">
+            <h2>What are you thinking?</h2>
+            <p>
+                Still have questions? Ask away!
+            </p>
+            <label>Your Email Address</label>
+            <input type="text" />
+            <label>Subject</label>
+            <input type="text" />
+            <label>Message</label>
+            <textarea cols="30" rows="10" style="width:100%; height: 200px;"></textarea>
+            <p>
+                <input type="submit" value="Submit" class="button radius"/>
+            </p>
+        </div>
+        <div class="large-6 columns">
+            <blockquote>Trailer Online is superior to other websites I have had in the past. It is easy to use and lets me make the changes I want whenever I want. <cite>Stan Brower, <a href="http://www.broweronline.com">Brower Sales & Equipment, FL</a></cite></blockquote>
+            <blockquote>My main concern was how much time it was going to take to update the website. After trying the demo I was glad to see how easy the website was to use <cite>Josh Wheeks, <a href="http://capitaltrailer.sboproducts.com">Capital Trailers, MT</a></cite></blockquote>
         </div>
     </div>
 </div>
