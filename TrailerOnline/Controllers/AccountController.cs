@@ -14,7 +14,6 @@ using TrailerOnline.Models;
 namespace TrailerOnline.Controllers
 {
     [Authorize]
-    [InitializeSimpleMembership]
     public class AccountController : Controller
     {
         //

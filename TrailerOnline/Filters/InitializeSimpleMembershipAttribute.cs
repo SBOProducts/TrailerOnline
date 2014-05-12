@@ -8,6 +8,7 @@ using TrailerOnline.Models;
 
 namespace TrailerOnline.Filters
 {
+    /*
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute
     {
@@ -38,7 +39,7 @@ namespace TrailerOnline.Filters
                         }
                     }
 
-                    WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", autoCreateTables: true);
+                    WebSecurity.InitializeDatabaseConnection("dbo", "UserProfile", "UserId", "UserName", autoCreateTables: true);
                 }
                 catch (Exception ex)
                 {
@@ -47,4 +48,5 @@ namespace TrailerOnline.Filters
             }
         }
     }
+    */
 }

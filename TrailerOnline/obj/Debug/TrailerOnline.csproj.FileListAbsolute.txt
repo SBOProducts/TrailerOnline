@@ -83,3 +83,7 @@ C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\zh-Hant\System.
 C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.csprojResolveAssemblyReference.cache
 C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.dll
 C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.pdb
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\TrailerOnline.BLL.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\TrailerOnline.BLL.pdb
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\TrailerOnline.DAL.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\TrailerOnline.DAL.pdb

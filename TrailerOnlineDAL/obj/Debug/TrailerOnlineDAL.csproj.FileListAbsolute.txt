@@ -1,0 +1,5 @@
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineDAL\obj\Debug\TrailerOnlineDAL.csprojResolveAssemblyReference.cache
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineDAL\bin\Debug\TrailerOnline.DAL.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineDAL\bin\Debug\TrailerOnline.DAL.pdb
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineDAL\obj\Debug\TrailerOnline.DAL.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineDAL\obj\Debug\TrailerOnline.DAL.pdb
