@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend
-// CREATED DATE: 5/12/2014
+// CREATED DATE: 5/13/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -28,23 +28,29 @@ namespace TrailerOnline.DAL.DAL.dbo
         public static int Create(TenantDO DO)
         {
             SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
-            SqlParameter _NameLower = new SqlParameter("NameLower", SqlDbType.VarChar);
+            SqlParameter _Host = new SqlParameter("Host", SqlDbType.VarChar);
             SqlParameter _Title = new SqlParameter("Title", SqlDbType.VarChar);
             SqlParameter _Theme = new SqlParameter("Theme", SqlDbType.VarChar);
             SqlParameter _Layout = new SqlParameter("Layout", SqlDbType.VarChar);
+            SqlParameter _Owner = new SqlParameter("Owner", SqlDbType.NVarChar);
+            SqlParameter _Created = new SqlParameter("Created", SqlDbType.DateTime);
             
             _Name.Value = DO.Name;
-            _NameLower.Value = DO.NameLower;
+            _Host.Value = DO.Host;
             _Title.Value = DO.Title;
             _Theme.Value = DO.Theme;
             _Layout.Value = DO.Layout;
+            _Owner.Value = DO.Owner;
+            _Created.Value = DO.Created;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _Name,
-                _NameLower,
+                _Host,
                 _Title,
                 _Theme,
-                _Layout
+                _Layout,
+                _Owner,
+                _Created
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Tenant_Insert]", _params, "dbo");
@@ -59,25 +65,31 @@ namespace TrailerOnline.DAL.DAL.dbo
         {
             SqlParameter _TenantId = new SqlParameter("TenantId", SqlDbType.Int);
             SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
-            SqlParameter _NameLower = new SqlParameter("NameLower", SqlDbType.VarChar);
+            SqlParameter _Host = new SqlParameter("Host", SqlDbType.VarChar);
             SqlParameter _Title = new SqlParameter("Title", SqlDbType.VarChar);
             SqlParameter _Theme = new SqlParameter("Theme", SqlDbType.VarChar);
             SqlParameter _Layout = new SqlParameter("Layout", SqlDbType.VarChar);
+            SqlParameter _Owner = new SqlParameter("Owner", SqlDbType.NVarChar);
+            SqlParameter _Created = new SqlParameter("Created", SqlDbType.DateTime);
             
             _TenantId.Value = DO.TenantId;
             _Name.Value = DO.Name;
-            _NameLower.Value = DO.NameLower;
+            _Host.Value = DO.Host;
             _Title.Value = DO.Title;
             _Theme.Value = DO.Theme;
             _Layout.Value = DO.Layout;
+            _Owner.Value = DO.Owner;
+            _Created.Value = DO.Created;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _TenantId,
                 _Name,
-                _NameLower,
+                _Host,
                 _Title,
                 _Theme,
-                _Layout
+                _Layout,
+                _Owner,
+                _Created
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Tenant_Update]", _params, "dbo");
@@ -116,10 +128,13 @@ namespace TrailerOnline.DAL.DAL.dbo
                 
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
                 obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
                 obj.Layout = sr.GetString(sr.GetOrdinal("Layout"));
-                if (sr.IsDBNull(sr.GetOrdinal("NameLower"))) { obj.NameLower = null; } else { obj.NameLower = sr.GetString(sr.GetOrdinal("NameLower")); }
+                obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
+                obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
+                
 
 
                 objs.Add(obj);
@@ -153,10 +168,51 @@ namespace TrailerOnline.DAL.DAL.dbo
 				
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
                 obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
                 obj.Layout = sr.GetString(sr.GetOrdinal("Layout"));
-                if (sr.IsDBNull(sr.GetOrdinal("NameLower"))) { obj.NameLower = null; } else { obj.NameLower = sr.GetString(sr.GetOrdinal("NameLower")); }
+                obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
+                obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
+                
+
+                objs.Add(obj);
+            }
+
+            return objs.ToArray();
+        }
+
+/// <summary>
+        /// Selects Tenant records by Tenant_Host
+        /// </summary>
+        public static TenantDO[] GetByTenant_Host(String Host)
+        {
+
+            SqlParameter _Host = new SqlParameter("Host", SqlDbType.VarChar);
+			
+            _Host.Value = Host;
+			
+            SqlParameter[] _params = new SqlParameter[] {
+                _Host
+            };
+
+            SafeReader sr = DataCommon.ExecuteSafeReader("[dbo].[Tenant_GetByTenant_Host]", _params, "dbo");
+
+            List<TenantDO> objs = new List<TenantDO>();
+			
+            while(sr.Read())
+            {
+                TenantDO obj = new TenantDO();
+				
+                obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
+                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Host = sr.GetString(sr.GetOrdinal("Host"));
+                obj.Title = sr.GetString(sr.GetOrdinal("Title"));
+                obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
+                obj.Layout = sr.GetString(sr.GetOrdinal("Layout"));
+                obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
+                obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
+                
 
                 objs.Add(obj);
             }
@@ -167,15 +223,15 @@ namespace TrailerOnline.DAL.DAL.dbo
 /// <summary>
         /// Selects Tenant records by Tenant_Name
         /// </summary>
-        public static TenantDO[] GetByTenant_Name(String NameLower)
+        public static TenantDO[] GetByTenant_Name(String Name)
         {
 
-            SqlParameter _NameLower = new SqlParameter("NameLower", SqlDbType.VarChar);
+            SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
 			
-            _NameLower.Value = NameLower;
+            _Name.Value = Name;
 			
             SqlParameter[] _params = new SqlParameter[] {
-                _NameLower
+                _Name
             };
 
             SafeReader sr = DataCommon.ExecuteSafeReader("[dbo].[Tenant_GetByTenant_Name]", _params, "dbo");
@@ -188,10 +244,51 @@ namespace TrailerOnline.DAL.DAL.dbo
 				
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
                 obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
                 obj.Layout = sr.GetString(sr.GetOrdinal("Layout"));
-                if (sr.IsDBNull(sr.GetOrdinal("NameLower"))) { obj.NameLower = null; } else { obj.NameLower = sr.GetString(sr.GetOrdinal("NameLower")); }
+                obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
+                obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
+                
+
+                objs.Add(obj);
+            }
+
+            return objs.ToArray();
+        }
+
+/// <summary>
+        /// Selects Tenant records by Tenant_Owner
+        /// </summary>
+        public static TenantDO[] GetByTenant_Owner(String Owner)
+        {
+
+            SqlParameter _Owner = new SqlParameter("Owner", SqlDbType.NVarChar);
+			
+            _Owner.Value = Owner;
+			
+            SqlParameter[] _params = new SqlParameter[] {
+                _Owner
+            };
+
+            SafeReader sr = DataCommon.ExecuteSafeReader("[dbo].[Tenant_GetByTenant_Owner]", _params, "dbo");
+
+            List<TenantDO> objs = new List<TenantDO>();
+			
+            while(sr.Read())
+            {
+                TenantDO obj = new TenantDO();
+				
+                obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
+                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Host = sr.GetString(sr.GetOrdinal("Host"));
+                obj.Title = sr.GetString(sr.GetOrdinal("Title"));
+                obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
+                obj.Layout = sr.GetString(sr.GetOrdinal("Layout"));
+                obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
+                obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
+                
 
                 objs.Add(obj);
             }

@@ -11,16 +11,21 @@ namespace TrailerOnline.Controllers
     {
         public ActionResult Index()
         {
-            string url = Request.Url.ToString();
-            string tenant = RouteData.Values["tenant"].ToString();
-            TenantBO model = TenantBLL.GetTenant(tenant);
-
-            return View(model);
+            
+            return View();
         }
 
 
-        public ActionResult Foundation()
+        public ActionResult About()
         {
+            
+            return View();
+        }
+
+        
+        public ActionResult Contact()
+        {
+            
             return View();
         }
     }

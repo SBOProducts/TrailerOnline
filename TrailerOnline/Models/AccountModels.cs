@@ -11,7 +11,7 @@ namespace TrailerOnline.Models
     public class UsersContext : DbContext
     {
         public UsersContext()
-            : base("DefaultConnection")
+            : base("dbo")
         {
         }
 
@@ -73,7 +73,8 @@ namespace TrailerOnline.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Your Email Address")]
+        [DataType(DataType.EmailAddress)]
         public string UserName { get; set; }
 
         [Required]
@@ -86,6 +87,18 @@ namespace TrailerOnline.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+    }
+
+    public class CreateWebsiteModel : RegisterModel
+    {
+        [Required]
+        [Display(Name="Website Name")]
+        [RegularExpression("\\w+")]
+        public string TenantName { get; set; }
+
+        [Required]
+        [Display(Name = "Business Name")]
+        public string BusinessName { get; set; }
     }
 
     public class ExternalLogin

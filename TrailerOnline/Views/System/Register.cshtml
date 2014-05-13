@@ -1,4 +1,4 @@
-﻿@model TrailerOnline.Models.CreateWebsiteModel
+﻿@model TrailerOnline.Models.RegisterModel
 @{
     ViewBag.Title = "Register";
 }
@@ -16,12 +16,6 @@
 
             @Html.LabelFor(m => m.UserName)
             @Html.TextBoxFor(m => m.UserName)
-
-            @Html.LabelFor(m => m.BusinessName)
-            @Html.TextBoxFor(m => m.BusinessName)
-            
-            @Html.LabelFor(m => m.TenantName)
-            @Html.TextBoxFor(m => m.TenantName)
                         
             @Html.LabelFor(m => m.Password)
             @Html.PasswordFor(m => m.Password)
@@ -29,11 +23,7 @@
             @Html.LabelFor(m => m.ConfirmPassword)
             @Html.PasswordFor(m => m.ConfirmPassword)
 
-            
-
-            <p>
-                <input type="submit" value="Create Website" class="button radius" />
-            </p>
+            <input type="submit" value="Create Website" class="button radius" />
         }
     </div>
 
@@ -43,5 +33,13 @@
         
     </div>
 </div>
+
+
+
+
+
+
+
+
 
 

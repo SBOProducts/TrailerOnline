@@ -14,17 +14,12 @@ namespace TrailerOnline
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "System",
-                url: "System/{controller}/{action}/{id}",
-                defaults: new { controller = "System", action = "Index", id = UrlParameter.Optional }
-            );
-
-            routes.MapRoute(
                 name: "Default",
                 url: "{tenant}/{controller}/{action}/{id}",
-                defaults: new { tenant = "Welcome", controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { tenant = TrailerOnline.BLL.MultiTenancy.TenantBLL.DefaultTenantName, controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
+            
 
         }
     }

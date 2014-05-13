@@ -9,20 +9,14 @@
 USE [TrailerOnline]
 
 -- Drop the procedure if it exists.
-If OBJECT_ID('[dbo].[Tenant_Insert]') IS NOT NULL
+If OBJECT_ID('[dbo].[Tenant_GetByTenant_Host]') IS NOT NULL
     BEGIN
-    DROP PROCEDURE [dbo].[Tenant_Insert]
+    DROP PROCEDURE [dbo].[Tenant_GetByTenant_Host]
     END
 GO
 
-CREATE PROCEDURE [dbo].[Tenant_Insert]
-    @Name VarChar(50),
-    @Host VarChar(50),
-    @Title VarChar(100),
-    @Theme VarChar(50),
-    @Layout VarChar(50),
-    @Owner NVarChar(56),
-    @Created DateTime
+CREATE PROCEDURE [dbo].[Tenant_GetByTenant_Host]
+    @Host VarChar(50)
 AS
 
 BEGIN
@@ -30,8 +24,8 @@ BEGIN
     -- interfering with SELECT statements.
     SET NOCOUNT ON;
 
-    INSERT INTO [dbo].[Tenant]
-	(
+    SELECT
+        [TenantId],
         [Name],
         [Host],
         [Title],
@@ -39,17 +33,8 @@ BEGIN
         [Layout],
         [Owner],
         [Created]
-    ) VALUES (
-        @Name,
-        @Host,
-        @Title,
-        @Theme,
-        @Layout,
-        @Owner,
-        @Created
-	)
-
-	-- return the new identity value
-	SELECT SCOPE_IDENTITY()
+    FROM [dbo].[Tenant]
+    WHERE 
+        [Host] = @Host
 
 END

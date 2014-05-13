@@ -11,6 +11,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using WebMatrix.WebData;
 using TrailerOnline.Models;
+using TrailerOnline.BLL.MultiTenancy;
 
 
 namespace TrailerOnline
@@ -67,7 +68,13 @@ namespace TrailerOnline
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }
 
+        
 
+        protected void Application_BeginRequest(object sender, EventArgs e)
+        {
+            
+
+        }
 
     }
 }

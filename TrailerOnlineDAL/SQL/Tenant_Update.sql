@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 5/12/2014
+-- CREATED DATE: 5/13/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -18,10 +18,12 @@ GO
 CREATE PROCEDURE [dbo].[Tenant_Update]
     @TenantId Int,
     @Name VarChar(50),
-    @NameLower VarChar(50) = null,
+    @Host VarChar(50),
     @Title VarChar(100),
     @Theme VarChar(50),
-    @Layout VarChar(50)
+    @Layout VarChar(50),
+    @Owner NVarChar(56),
+    @Created DateTime
 AS
 
 BEGIN
@@ -32,10 +34,12 @@ BEGIN
     UPDATE [dbo].[Tenant]
     SET
         [Name] = @Name,
-        [NameLower] = @NameLower,
+        [Host] = @Host,
         [Title] = @Title,
         [Theme] = @Theme,
-        [Layout] = @Layout
+        [Layout] = @Layout,
+        [Owner] = @Owner,
+        [Created] = @Created
     WHERE
         [TenantId] = @TenantId
 

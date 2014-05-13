@@ -1,0 +1,8 @@
+﻿@{
+    TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
+    Layout = tenant.Layout;
+}
+
+@section Header{
+    <link rel="stylesheet" type="text/css" href="@Url.Content(tenant.Theme)" />
+}

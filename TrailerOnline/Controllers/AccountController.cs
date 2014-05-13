@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using TrailerOnline.Filters;
 using TrailerOnline.Models;
+using TrailerOnline.BLL.MultiTenancy;
 
 namespace TrailerOnline.Controllers
 {
@@ -71,7 +72,7 @@ namespace TrailerOnline.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(CreateWebsiteModel model)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +81,11 @@ namespace TrailerOnline.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
-                    return RedirectToAction("Index", "Home");
+
+                    // create the tenant
+                    TenantBLL.Create(model.TenantName, model.BusinessName, model.UserName);
+
+                    return RedirectToAction("VerifyAccount", "Account");
                 }
                 catch (MembershipCreateUserException e)
                 {
@@ -326,6 +331,20 @@ namespace TrailerOnline.Controllers
             ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
+
+        [AllowAnonymous]
+        public ActionResult VerifyAccount()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult VerifyAccountToken(Guid AccountToken)
+        {
+
+            return View(AccountToken);
+        }
+        
 
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)

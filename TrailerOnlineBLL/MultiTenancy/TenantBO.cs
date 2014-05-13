@@ -25,6 +25,9 @@ namespace TrailerOnline.BLL.MultiTenancy
             this.Title = data.Title;
             this.Theme = data.Theme;
             this.Layout = data.Layout;
+            this.Host = data.Host;
+            this.Created = data.Created;
+            this.Owner = data.Owner;
         }
 
 
@@ -40,23 +43,75 @@ namespace TrailerOnline.BLL.MultiTenancy
                 Theme = this.Theme,
                 Title = this.Title,
                 Name = this.Name,
-                NameLower = this.NameLower,
-                TenantId = this.TenantId
+                TenantId = this.TenantId,
+                Host = this.Host,
+                Created = this.Created,
+                Owner = this.Owner
             };
         }
 
 
+
+        /// <summary>
+        /// the id of the tenant
+        /// </summary>
         public int TenantId { get; set; }
 
+        /// <summary>
+        /// the host name
+        /// </summary>
+        public string Host { get; set; }
+
+        /// <summary>
+        /// the lower case version of the host name
+        /// </summary>
+        public string HostLower { get { return Host.ToLower(); } }
+        
+        /// <summary>
+        /// the name used to reference the tenent
+        /// </summary>
         public string Name { get; set; }
 
+        /// <summary>
+        /// the lowercase version of the tenent name
+        /// </summary>
         public string NameLower { get { return Name.ToLower(); } }
 
+        /// <summary>
+        /// the business title
+        /// </summary>
         public string Title { get; set; }
 
+        /// <summary>
+        /// the theme to use
+        /// </summary>
         public string Theme { get; set; }
 
+        /// <summary>
+        /// the layout to use
+        /// </summary>
         public string Layout { get; set; }
+
+        /// <summary>
+        /// when it was created
+        /// </summary>
+        public DateTime Created { get; set; }
+
+        /// <summary>
+        /// The login name of the tenant 
+        /// </summary>
+        public string Owner { get; set; }
+
+
+        /// <summary>
+        /// If the user presented is the tenant
+        /// </summary>
+        /// <param name="UserName"></param>
+        /// <returns></returns>
+        public bool IsOwner(string UserName)
+        {
+            return string.Compare(UserName, Owner, true) == 0;
+        }
 
 
     }

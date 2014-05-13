@@ -1,5 +1,86 @@
 ﻿@{
-    ViewBag.Title = "_defaultLayout";
+    TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
 }
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
 
-<h2>_defaultLayout</h2>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title - @tenant.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/foundation/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/foundation/foundation.mvc.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/foundation/app.css" />
+    <link rel="stylesheet" type="text/css" href="/Content/site.css" />
+    @RenderSection("Header", false)
+    <script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+  <nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>@Html.ActionLink(tenant.Title, "Index", "Home", new { tenant = tenant.Name }, null)</h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+        <a href="/"><span>Menu</span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="left">
+      <li class="divider"></li>
+      <li>@Html.ActionLink("Home", "Index", "Home", new { tenant = tenant.Name }, null)</li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+          @Html.ActionLink("Inventory", "Categories", "Product", new { tenant = tenant.Name }, null)
+        <ul class="dropdown">
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>@Html.ActionLink("About Us", "About", "Home", new { tenant = tenant.Name }, null)</li>
+      <li class="divider"></li>
+      <li>@Html.ActionLink("Contact", "Contact", "Home", new { tenant = tenant.Name }, null)</li>
+      <li class="divider"></li>
+    </ul>
+    <ul class="right">
+        <li class="divider"></li>
+        @Html.Partial("_LoginPartial")
+    </ul>
+  </section>
+</nav>
+
+
+
+    @RenderBody()
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/fastclick.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/jquery.cookie.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/fastclick.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.abide.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.accordion.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.alert.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.clearing.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.dropdown.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.equalizer.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.interchange.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.joyride.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.magellan.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.offcanvas.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.orbit.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.reveal.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.slider.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.tab.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.tooltip.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/foundation.topbar.js"></script>
+    <script type="text/javascript" src="/Scripts/foundation/app.js"></script>
+    
+    <script>
+        $(document).foundation();
+    </script>
+</body>
+</html>
