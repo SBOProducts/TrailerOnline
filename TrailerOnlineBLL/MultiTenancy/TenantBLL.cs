@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,20 +89,39 @@ namespace TrailerOnline.BLL.MultiTenancy
 
         #endregion
 
+        #region Defaults
+
         /// <summary>
-        /// The Host name of the system (not a customer domain name applied to a site)
+        /// The Host name of the system (not a customer domain)
         /// </summary>
-        public const string SystemHost = "TrailerOnline.com";
-        
+        public static string DefaultHost { get { return ConfigurationManager.AppSettings["DefaultHost"]; } }
+
         /// <summary>
-        /// The default tenant website used as an example
+        /// The default layout
         /// </summary>
-        public const string DefaultTenantName = "Example";
+        public static string DefaultLayout { get { return ConfigurationManager.AppSettings["DefaultLayout"]; } }
+
+        /// <summary>
+        /// The default tenant website
+        /// </summary>
+        public static string DefaultTenantName { get { return ConfigurationManager.AppSettings["DefaultTenantName"]; } }
+
+        /// <summary>
+        /// The default tenant title (business name)
+        /// </summary>
+        public static string DefaultTenantTitle { get { return ConfigurationManager.AppSettings["DefaultTenantTitle"]; } }
+
+        /// <summary>
+        /// The default theme
+        /// </summary>
+        public static string DefaultTheme { get { return ConfigurationManager.AppSettings["DefaultTheme"]; } }
 
         /// <summary>
         /// The name used to refrerence tenants in the request.item.data collection
         /// </summary>
         private const string DataItemName = "TenantBO";
+
+        #endregion
 
 
         /// <summary>
@@ -125,7 +145,7 @@ namespace TrailerOnline.BLL.MultiTenancy
             TenantBO tenant = null;
 
             // is not a custom domain?
-            if (string.Compare(host, SystemHost, true) == 0)
+            if (string.Compare(host, DefaultHost, true) == 0)
             {
                 // use the default tenant if none is specified
                 if (string.IsNullOrEmpty(tenantName))
@@ -138,6 +158,9 @@ namespace TrailerOnline.BLL.MultiTenancy
                 // is a custom domain
                 tenant = GetTenantByHost(host);
             }
+
+            if (tenant == null)
+                tenant = new DefaultTenantBO();
 
             // add tenant to data items
             Context.Items.Add(DataItemName, tenant);
@@ -200,23 +223,36 @@ namespace TrailerOnline.BLL.MultiTenancy
 
 
         /// <summary>
+        /// Gets a tenant by the Owenr or null if the tenant doesn't exist
+        /// </summary>
+        /// <param name="Owner"></param>
+        /// <returns></returns>
+        public static TenantBO GetTenantByOwner(string Owner)
+        {
+            return Tenants.Where(t => t.Owner == Owner).FirstOrDefault();
+        }
+
+
+        /// <summary>
         /// Creates a new tenant in the system
         /// </summary>
         /// <param name="TenantName"></param>
         /// <param name="TenantTitle"></param>
         /// <param name="UserName"></param>
         /// <returns></returns>
-        public static TenantBO Create(string TenantName, string TenantTitle, string UserName)
+        public static TenantBO Create(string TenantName, string TenantTitle, string UserName, int ReferredByTenantId)
         {
             TenantBO bo = new TenantBO()
             {
                 Created = DateTime.Now,
-                Host = SystemHost,
+                Host = DefaultHost,
                 Layout = "~/Views/Shared/_defaultLayout.cshtml",
                 Name = TenantName,
                 Owner = UserName,
                 Theme = "~/Content/default/default.css",
-                Title = TenantTitle
+                Title = TenantTitle,
+                Promotional = true,
+                ReferredByTenantId = ReferredByTenantId
             };
 
             return Create(bo);

@@ -1,3 +1,4 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
+    Layout = tenant.Layout;
 }

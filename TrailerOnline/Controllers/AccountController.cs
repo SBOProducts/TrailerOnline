@@ -37,7 +37,9 @@ namespace TrailerOnline.Controllers
         {
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToLocal(returnUrl);
+                TenantBO user = TenantBLL.GetTenantByOwner(model.UserName);
+                return RedirectToAction("Index", "Home", new { tenant = user.Name });
+                //return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
@@ -82,10 +84,11 @@ namespace TrailerOnline.Controllers
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
 
-                    // create the tenant
-                    TenantBLL.Create(model.TenantName, model.BusinessName, model.UserName);
+                    // create the new tenant
+                    TenantBO currentTenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
+                    TenantBLL.Create(model.TenantName, model.BusinessName, model.UserName, currentTenant.TenantId);
 
-                    return RedirectToAction("VerifyAccount", "Account");
+                    return RedirectToAction("Index", "Home", new { tenant = model.TenantName });
                 }
                 catch (MembershipCreateUserException e)
                 {

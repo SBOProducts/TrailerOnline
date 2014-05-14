@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 5/13/2014
+-- CREATED DATE: 5/14/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -22,7 +22,9 @@ CREATE PROCEDURE [dbo].[Tenant_Insert]
     @Theme VarChar(50),
     @Layout VarChar(50),
     @Owner NVarChar(56),
-    @Created DateTime
+    @Created DateTime,
+    @Promotional Bit,
+    @ReferrerTenantId Int
 AS
 
 BEGIN
@@ -38,7 +40,9 @@ BEGIN
         [Theme],
         [Layout],
         [Owner],
-        [Created]
+        [Created],
+        [Promotional],
+        [ReferrerTenantId]
     ) VALUES (
         @Name,
         @Host,
@@ -46,7 +50,9 @@ BEGIN
         @Theme,
         @Layout,
         @Owner,
-        @Created
+        @Created,
+        @Promotional,
+        @ReferrerTenantId
 	)
 
 	-- return the new identity value

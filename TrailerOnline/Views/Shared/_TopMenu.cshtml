@@ -1,0 +1,67 @@
+﻿@{
+    TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
+}
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>@Html.ActionLink(tenant.Title, "Index", "Home", new { tenant = tenant.Name }, null)</h1>
+    </li>
+    <li class="toggle-topbar menu-icon">
+        <a href="/"><span>Menu</span></a>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="left">
+      <li class="divider"></li>
+      <li>@Html.ActionLink("Home", "Index", "Home", new { tenant = tenant.Name }, null)</li>
+      <li class="divider"></li>
+      <li class="has-dropdown">
+          @Html.ActionLink("Inventory", "Categories", "Product", new { tenant = tenant.Name }, null)
+        <ul class="dropdown">
+        </ul>
+      </li>
+      <li class="divider"></li>
+      <li>@Html.ActionLink("About Us", "About", "Home", new { tenant = tenant.Name }, null)</li>
+      <li class="divider"></li>
+      <li>@Html.ActionLink("Contact", "Contact", "Home", new { tenant = tenant.Name }, null)</li>
+      <li class="divider"></li>
+    </ul>
+    <ul class="right">
+        
+        @if (tenant.IsOwner(User.Identity.Name)) {
+            // user is logged in as the owner of the current site
+            <li class="has-dropdown">
+                @Html.ActionLink(tenant.Title, "Index", "MyAccount", new { tenant = tenant.Name }, null)
+                <ul class="dropdown">
+                    <li>@Html.ActionLink("Settings", "Settings", "MyAccount", new { tenant = tenant.Name }, null)</li>
+                    <li>@Html.ActionLink("Payments", "Payments", "MyAccount", new { tenant = tenant.Name }, null)</li>
+                    <li>@Html.ActionLink("Profile", "Profile", "MyAccount", new { tenant = tenant.Name }, null)</li>
+                </ul>
+            </li>
+            <li class="divider"></li>
+            <li>
+                @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                    @Html.AntiForgeryToken()
+                }
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            </li>
+        } else {
+            // user is logged in, but is not the owner of the current site
+            if(User.Identity.IsAuthenticated)
+            {
+                TenantBO mySite = TenantBLL.GetTenantByOwner(User.Identity.Name);
+                if(mySite != null){
+                    <li>@Html.ActionLink(mySite.Title, "Index", "Home", new { tenant = mySite.Name }, null)</li>
+                    <li class="divider"></li>
+                }
+            } else {
+                if(tenant.Promotional){
+                    <li>@Html.ActionLink("Free Website!", "Register", "Account", new { tenant = tenant.Name }, new { @class = "button" })</li>
+                    <li class="divider"></li>
+                }
+            }
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        }
+    </ul>
+  </section>
+</nav>

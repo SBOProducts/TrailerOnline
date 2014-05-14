@@ -7,8 +7,29 @@ using TrailerOnline.DAL.DO.dbo;
 
 namespace TrailerOnline.BLL.MultiTenancy
 {
+    /// <summary>
+    /// The default tenant when none is provided
+    /// </summary>
+    public class DefaultTenantBO: TenantBO
+    {
+        public DefaultTenantBO()
+        {
+            this.Created = DateTime.Now;
+            this.Host = TenantBLL.DefaultHost;
+            this.Layout = TenantBLL.DefaultLayout;
+            this.Name = TenantBLL.DefaultTenantName;
+            this.Owner = null;
+            this.TenantId = 0;
+            this.Theme = TenantBLL.DefaultTheme;
+            this.Title = TenantBLL.DefaultTenantTitle;
+            this.Promotional = true;
+        }
+    }
+
     public class TenantBO
     {
+
+
         /// <summary>
         /// Creates a new default instance of the business object
         /// </summary>
@@ -28,6 +49,8 @@ namespace TrailerOnline.BLL.MultiTenancy
             this.Host = data.Host;
             this.Created = data.Created;
             this.Owner = data.Owner;
+            this.Promotional = data.Promotional;
+            this.ReferredByTenantId = data.ReferrerTenantId;
         }
 
 
@@ -46,7 +69,9 @@ namespace TrailerOnline.BLL.MultiTenancy
                 TenantId = this.TenantId,
                 Host = this.Host,
                 Created = this.Created,
-                Owner = this.Owner
+                Owner = this.Owner,
+                Promotional = this.Promotional,
+                ReferrerTenantId = this.ReferredByTenantId
             };
         }
 
@@ -76,6 +101,11 @@ namespace TrailerOnline.BLL.MultiTenancy
         /// the lowercase version of the tenent name
         /// </summary>
         public string NameLower { get { return Name.ToLower(); } }
+
+        /// <summary>
+        /// If the site promotes Trailer Online by displaying links to create a demo
+        /// </summary>
+        public bool Promotional { get; set; }
 
         /// <summary>
         /// the business title
@@ -112,6 +142,16 @@ namespace TrailerOnline.BLL.MultiTenancy
         {
             return string.Compare(UserName, Owner, true) == 0;
         }
+
+        /// <summary>
+        /// If the tenant is the example
+        /// </summary>
+        public bool IsExample { get { return Name == TenantBLL.DefaultTenantName; } }
+
+        /// <summary>
+        /// The tenant that referred this tenant
+        /// </summary>
+        public int ReferredByTenantId { get; set; }
 
 
     }

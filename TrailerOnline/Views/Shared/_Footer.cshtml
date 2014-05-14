@@ -1,0 +1,20 @@
+﻿@{
+    TenantBO tenant = TenantBLL.GetTenant(HttpContext.Current);
+}
+
+<div class="row">
+    <div class="large-3 columns">
+        <h3>@tenant.Title</h3>
+
+    </div>
+    <div class="large-3 columns">
+
+    </div>
+    <div class="large-3 columns">
+
+    </div>
+    <div class="large-3 columns">
+        <h3>Trailer Online</h3>
+        <strong>@Html.ActionLink("Create Your Free Website Now!", "Register", "Account", new { tenant = tenant.Name }, null)</strong>
+    </div>
+</div>
