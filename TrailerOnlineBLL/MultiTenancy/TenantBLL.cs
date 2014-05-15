@@ -125,6 +125,12 @@ namespace TrailerOnline.BLL.MultiTenancy
 
 
         /// <summary>
+        /// The current tenant for the request
+        /// </summary>
+        public static TenantBO CurrentTenant { get { return GetTenant(HttpContext.Current); } }
+
+
+        /// <summary>
         /// Gets the tennant from the current http context
         /// </summary>
         /// <param name="Context"></param>
@@ -160,7 +166,10 @@ namespace TrailerOnline.BLL.MultiTenancy
             }
 
             if (tenant == null)
+            {
+                //throw new TenantNotFoundException(tenantName);
                 tenant = new DefaultTenantBO();
+            }
 
             // add tenant to data items
             Context.Items.Add(DataItemName, tenant);

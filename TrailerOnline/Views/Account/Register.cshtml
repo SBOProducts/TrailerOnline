@@ -1,12 +1,17 @@
 ﻿@model TrailerOnline.Models.CreateWebsiteModel
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Your Free Website";
 }
 
 <div class="row">
-    <div class="large-4 columns">
-        <h1>@ViewBag.Title</h1>
-        <h2>Create a New Website</h2>
+    <div class="large-6 columns">
+        <h1>Get Started</h1>
+        <p>
+            Want a website like the one you're looking at? Create one now, they're free! 
+        </p>
+        <p>
+            Not sure yet? Why don't you @Html.ActionLink("take the tour.", "Index", "Home", new { tenant = TenantBLL.DefaultTenantName }, null)
+        </p>
        
         @using (Html.BeginForm()) {
             @Html.AntiForgeryToken()
@@ -35,10 +40,28 @@
         }
     </div>
 
-    <div class="large-4 columns">
+    <div class="large-6 columns">
+        <h2>Free Websites</h2>
+        <p>
+            Our websites are free to use as long as you like. 
+        </p>
+        <ul>
+            <li>Organize your inventory by category</li>
+            <li>Upload photos of your products</li>
+            <li>Update pages with your information</li>
+            <li>Sevaral designs to choose from</li>
+            <li>Incredibly easy to use</li>
+        </ul>
         
-
-        
+        <h2>Premium Websites</h2>
+        <p>
+            Our premium websites allow you to expand your online presence
+        </p>
+        <ul>
+            <li>Unlimited inventory categories</li>
+            <li>Unlimited products</li>
+            <li>Incredible price of only $50.00 per month</li>
+        </ul>
     </div>
 </div>
 
