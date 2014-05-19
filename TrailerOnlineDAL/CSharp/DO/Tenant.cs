@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend
-// CREATED DATE: 5/14/2014
+// CREATED DATE: 5/19/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -18,7 +18,6 @@ namespace TrailerOnline.DAL.DO.dbo
     {
 
         public virtual Int32 TenantId {get; set;}
-        public virtual String Name {get; set;}
         public virtual String Host {get; set;}
         public virtual String Title {get; set;}
         public virtual String Theme {get; set;}

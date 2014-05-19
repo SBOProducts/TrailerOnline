@@ -17,7 +17,6 @@ namespace TrailerOnline.BLL.MultiTenancy
             this.Created = DateTime.Now;
             this.Host = TenantBLL.DefaultHost;
             this.Layout = TenantBLL.DefaultLayout;
-            this.Name = TenantBLL.DefaultTenantName;
             this.Owner = null;
             this.TenantId = 0;
             this.Theme = TenantBLL.DefaultTheme;
@@ -42,7 +41,6 @@ namespace TrailerOnline.BLL.MultiTenancy
         internal TenantBO(TenantDO data)
         {
             this.TenantId = data.TenantId;
-            this.Name = data.Name;
             this.Title = data.Title;
             this.Theme = data.Theme;
             this.Layout = data.Layout;
@@ -65,7 +63,6 @@ namespace TrailerOnline.BLL.MultiTenancy
                 Layout = this.Layout,
                 Theme = this.Theme,
                 Title = this.Title,
-                Name = this.Name,
                 TenantId = this.TenantId,
                 Host = this.Host,
                 Created = this.Created,
@@ -92,15 +89,6 @@ namespace TrailerOnline.BLL.MultiTenancy
         /// </summary>
         public string HostLower { get { return Host.ToLower(); } }
         
-        /// <summary>
-        /// the name used to reference the tenent
-        /// </summary>
-        public string Name { get; set; }
-
-        /// <summary>
-        /// the lowercase version of the tenent name
-        /// </summary>
-        public string NameLower { get { return Name.ToLower(); } }
 
         /// <summary>
         /// If the site promotes Trailer Online by displaying links to create a demo
@@ -142,11 +130,6 @@ namespace TrailerOnline.BLL.MultiTenancy
         {
             return string.Compare(UserName, Owner, true) == 0;
         }
-
-        /// <summary>
-        /// If the tenant is the example
-        /// </summary>
-        public bool IsExample { get { return Name == TenantBLL.DefaultTenantName; } }
 
         /// <summary>
         /// The tenant that referred this tenant

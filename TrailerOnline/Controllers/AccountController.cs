@@ -38,7 +38,8 @@ namespace TrailerOnline.Controllers
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 TenantBO user = TenantBLL.GetTenantByOwner(model.UserName);
-                return RedirectToAction("Index", "Home", new { tenant = user.Name });
+                return Redirect(user.Host);
+                //return RedirectToAction("Index", "Home", new { tenant = user.Name });
                 //return RedirectToLocal(returnUrl);
             }
 

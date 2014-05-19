@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 5/14/2014
+-- CREATED DATE: 5/19/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -26,7 +26,6 @@ BEGIN
 
     SELECT
         [TenantId],
-        [Name],
         [Host],
         [Title],
         [Theme],

@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 5/14/2014
+-- CREATED DATE: 5/19/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -16,7 +16,6 @@ If OBJECT_ID('[dbo].[Tenant_Insert]') IS NOT NULL
 GO
 
 CREATE PROCEDURE [dbo].[Tenant_Insert]
-    @Name VarChar(50),
     @Host VarChar(50),
     @Title VarChar(100),
     @Theme VarChar(50),
@@ -34,7 +33,6 @@ BEGIN
 
     INSERT INTO [dbo].[Tenant]
 	(
-        [Name],
         [Host],
         [Title],
         [Theme],
@@ -44,7 +42,6 @@ BEGIN
         [Promotional],
         [ReferrerTenantId]
     ) VALUES (
-        @Name,
         @Host,
         @Title,
         @Theme,

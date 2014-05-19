@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend
-// CREATED DATE: 5/14/2014
+// CREATED DATE: 5/19/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -27,7 +27,6 @@ namespace TrailerOnline.DAL.DAL.dbo
         /// </summary>
         public static int Create(TenantDO DO)
         {
-            SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
             SqlParameter _Host = new SqlParameter("Host", SqlDbType.VarChar);
             SqlParameter _Title = new SqlParameter("Title", SqlDbType.VarChar);
             SqlParameter _Theme = new SqlParameter("Theme", SqlDbType.VarChar);
@@ -37,7 +36,6 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Promotional = new SqlParameter("Promotional", SqlDbType.Bit);
             SqlParameter _ReferrerTenantId = new SqlParameter("ReferrerTenantId", SqlDbType.Int);
             
-            _Name.Value = DO.Name;
             _Host.Value = DO.Host;
             _Title.Value = DO.Title;
             _Theme.Value = DO.Theme;
@@ -48,7 +46,6 @@ namespace TrailerOnline.DAL.DAL.dbo
             _ReferrerTenantId.Value = DO.ReferrerTenantId;
             
             SqlParameter[] _params = new SqlParameter[] {
-                _Name,
                 _Host,
                 _Title,
                 _Theme,
@@ -70,7 +67,6 @@ namespace TrailerOnline.DAL.DAL.dbo
         public static int Update(TenantDO DO)
         {
             SqlParameter _TenantId = new SqlParameter("TenantId", SqlDbType.Int);
-            SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
             SqlParameter _Host = new SqlParameter("Host", SqlDbType.VarChar);
             SqlParameter _Title = new SqlParameter("Title", SqlDbType.VarChar);
             SqlParameter _Theme = new SqlParameter("Theme", SqlDbType.VarChar);
@@ -81,7 +77,6 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _ReferrerTenantId = new SqlParameter("ReferrerTenantId", SqlDbType.Int);
             
             _TenantId.Value = DO.TenantId;
-            _Name.Value = DO.Name;
             _Host.Value = DO.Host;
             _Title.Value = DO.Title;
             _Theme.Value = DO.Theme;
@@ -93,7 +88,6 @@ namespace TrailerOnline.DAL.DAL.dbo
             
             SqlParameter[] _params = new SqlParameter[] {
                 _TenantId,
-                _Name,
                 _Host,
                 _Title,
                 _Theme,
@@ -139,7 +133,6 @@ namespace TrailerOnline.DAL.DAL.dbo
                 TenantDO obj = new TenantDO();
                 
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
-                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
                 obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
@@ -181,7 +174,6 @@ namespace TrailerOnline.DAL.DAL.dbo
                 TenantDO obj = new TenantDO();
 				
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
-                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
                 obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
@@ -221,47 +213,6 @@ namespace TrailerOnline.DAL.DAL.dbo
                 TenantDO obj = new TenantDO();
 				
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
-                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
-                obj.Host = sr.GetString(sr.GetOrdinal("Host"));
-                obj.Title = sr.GetString(sr.GetOrdinal("Title"));
-                obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
-                obj.Layout = sr.GetString(sr.GetOrdinal("Layout"));
-                obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
-                obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
-                obj.Promotional = sr.GetBoolean(sr.GetOrdinal("Promotional"));
-                obj.ReferrerTenantId = sr.GetInt32(sr.GetOrdinal("ReferrerTenantId"));
-                
-
-                objs.Add(obj);
-            }
-
-            return objs.ToArray();
-        }
-
-/// <summary>
-        /// Selects Tenant records by Tenant_Name
-        /// </summary>
-        public static TenantDO[] GetByTenant_Name(String Name)
-        {
-
-            SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
-			
-            _Name.Value = Name;
-			
-            SqlParameter[] _params = new SqlParameter[] {
-                _Name
-            };
-
-            SafeReader sr = DataCommon.ExecuteSafeReader("[dbo].[Tenant_GetByTenant_Name]", _params, "dbo");
-
-            List<TenantDO> objs = new List<TenantDO>();
-			
-            while(sr.Read())
-            {
-                TenantDO obj = new TenantDO();
-				
-                obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
-                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
                 obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));
@@ -301,7 +252,6 @@ namespace TrailerOnline.DAL.DAL.dbo
                 TenantDO obj = new TenantDO();
 				
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
-                obj.Name = sr.GetString(sr.GetOrdinal("Name"));
                 obj.Host = sr.GetString(sr.GetOrdinal("Host"));
                 obj.Title = sr.GetString(sr.GetOrdinal("Title"));
                 obj.Theme = sr.GetString(sr.GetOrdinal("Theme"));

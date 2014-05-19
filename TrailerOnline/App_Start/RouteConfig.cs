@@ -15,8 +15,9 @@ namespace TrailerOnline
 
             routes.MapRoute(
                 name: "Default",
-                url: "{tenant}/{controller}/{action}/{id}",
-                defaults: new { tenant = TrailerOnline.BLL.MultiTenancy.TenantBLL.DefaultTenantName, controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new string[] { "TrailerOnline.Controllers" }
             );
 
             

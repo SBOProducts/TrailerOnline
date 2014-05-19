@@ -91,35 +91,47 @@ namespace TrailerOnline.BLL.MultiTenancy
 
         #region Defaults
 
+
         /// <summary>
         /// The Host name of the system (not a customer domain)
         /// </summary>
         public static string DefaultHost { get { return ConfigurationManager.AppSettings["DefaultHost"]; } }
+
+
+        /// <summary>
+        /// Returns true if the host name matches the default host name
+        /// </summary>
+        /// <param name="HostName"></param>
+        /// <returns></returns>
+        public static bool IsDefaultHost(string HostName)
+        {
+            return string.Compare(HostName, DefaultHost, true) == 0;
+        }
+
 
         /// <summary>
         /// The default layout
         /// </summary>
         public static string DefaultLayout { get { return ConfigurationManager.AppSettings["DefaultLayout"]; } }
 
-        /// <summary>
-        /// The default tenant website
-        /// </summary>
-        public static string DefaultTenantName { get { return ConfigurationManager.AppSettings["DefaultTenantName"]; } }
 
         /// <summary>
         /// The default tenant title (business name)
         /// </summary>
         public static string DefaultTenantTitle { get { return ConfigurationManager.AppSettings["DefaultTenantTitle"]; } }
 
+
         /// <summary>
         /// The default theme
         /// </summary>
         public static string DefaultTheme { get { return ConfigurationManager.AppSettings["DefaultTheme"]; } }
 
+
         /// <summary>
         /// The name used to refrerence tenants in the request.item.data collection
         /// </summary>
         private const string DataItemName = "TenantBO";
+
 
         #endregion
 
@@ -140,27 +152,13 @@ namespace TrailerOnline.BLL.MultiTenancy
 
             HttpRequest Request = Context.Request;
             string host = Request.Headers["Host"].ToString();
-            string tenantName = GetTenantName(Request);
-
             TenantBO tenant = null;
+            
+            tenant = GetTenantByHost(host);
 
-            // is not a custom domain?
-            if (string.Compare(host, DefaultHost, true) == 0)
-            {
-                // use the default tenant if none is specified
-                if (string.IsNullOrEmpty(tenantName))
-                    tenantName = DefaultTenantName;
-
-                tenant = GetTenantByName(tenantName);
-            }
-            else
-            {
-                // is a custom domain
-                tenant = GetTenantByHost(host);
-            }
-
+            // The tenant could not be found
             if (tenant == null)
-                tenant = new DefaultTenantBO();
+                TenantNotFoundRedirect(Context, host);
 
             // add tenant to data items
             Context.Items.Add(DataItemName, tenant);
@@ -169,34 +167,20 @@ namespace TrailerOnline.BLL.MultiTenancy
             
         }
 
-
-
-
         /// <summary>
-        /// Gets the tenant name from the current request
+        /// Redirects to the default system page when no tenant specified, or to the not found page if the tenant was specified but doesn't exits
         /// </summary>
-        /// <param name="Request"></param>
-        /// <returns></returns>
-        private static string GetTenantName(HttpRequest Request)
+        /// <param name="Host"></param>
+        private static void TenantNotFoundRedirect(HttpContext Context, string Host)
         {
-            string[] parts = Request.Path.Split('/');
-            
-            if (parts.Length == 0)
-                return null;
-            
-            return parts[1];
+            string redirect = string.Empty;
 
-        }
+            if (IsDefaultHost(Host))
+                redirect = string.Format("http://{0}/Service", DefaultHost);
+            else
+                redirect = string.Format("http://{0}/Service/Home/NotFound?id={1}", DefaultHost, HttpContext.Current.Server.UrlEncode(Host));
 
-
-        /// <summary>
-        /// Get a tenant by Name or null if the tenant doesn't exist
-        /// </summary>
-        /// <param name="Name">The unique name of the tenant</param>
-        /// <returns></returns>
-        public static TenantBO GetTenantByName(string Name)
-        {
-            return Tenants.Where(t => t.NameLower == Name.ToLower()).FirstOrDefault();
+            Context.Response.Redirect(redirect);
         }
 
 
@@ -245,9 +229,8 @@ namespace TrailerOnline.BLL.MultiTenancy
             TenantBO bo = new TenantBO()
             {
                 Created = DateTime.Now,
-                Host = DefaultHost,
+                Host = string.Format("{0}.{1}", TenantName, DefaultHost),
                 Layout = "~/Views/Shared/_defaultLayout.cshtml",
-                Name = TenantName,
                 Owner = UserName,
                 Theme = "~/Content/default/default.css",
                 Title = TenantTitle,
@@ -268,9 +251,9 @@ namespace TrailerOnline.BLL.MultiTenancy
         /// </returns>
         public static TenantBO Create(TenantBO tenant)
         {
-            // tenants must be unique by name
-            if (TenantExistsByName(tenant.Name))
-                throw new DuplicateTenantException(tenant.Name);
+            // don't allow duplicate tenants
+            if(TenantExistsByHost(tenant.Host))
+                throw new DuplicateTenantException(tenant.Host);
 
             // create the new record
             TenantDO obj = tenant.GetDataObject();
@@ -300,10 +283,10 @@ namespace TrailerOnline.BLL.MultiTenancy
                 throw new TenantNotFoundException(tenant.TenantId);
 
             // throw an exception if the name has changed to an already existing tenant name
-            if (string.Compare(obj.Name, tenant.Name, true) != 0)
+            if (string.Compare(obj.Host, tenant.Host, true) != 0)
             {
-                if (TenantExistsByName(tenant.Name))
-                    throw new DuplicateTenantException(tenant.Name);
+                if (TenantExistsByHost(tenant.Host))
+                    throw new DuplicateTenantException(tenant.Host);
             }
 
             // update the cached version
@@ -359,18 +342,6 @@ namespace TrailerOnline.BLL.MultiTenancy
         }
 
         
-        /// <summary>
-        /// True if a tenant exists with the name
-        /// </summary>
-        /// <param name="Name"></param>
-        /// <returns></returns>
-        public static bool TenantExistsByName(string Name)
-        {
-            TenantBO obj = GetTenantByName(Name);
-            return obj != null;
-        }
-
-
         /// <summary>
         /// True if a tenant exists with the Id
         /// </summary>
