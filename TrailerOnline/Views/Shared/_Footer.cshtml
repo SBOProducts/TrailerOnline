@@ -14,7 +14,12 @@
 
     </div>
     <div class="large-3 columns">
+<<<<<<< HEAD
         <h3>Trailer Online</h3>
         <strong>@Html.ActionLink("Create Your Free Website Now!", "Register", "Account")</strong>
+=======
+        <h3>@Html.ActionLink(TenantBLL.DefaultTenantTitle, "Index", "Home", new { tenant = TenantBLL.DefaultTenantName }, null)</h3>
+        <strong>@Html.ActionLink("Get Your Free Website Now!", "Register", "Account", new { tenant = tenant.Name }, null)</strong>
+>>>>>>> 48e4de67531326d7d333cd89dc790132fc7ffe1d
     </div>
 </div>

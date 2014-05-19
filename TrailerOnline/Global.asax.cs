@@ -68,7 +68,6 @@ namespace TrailerOnline
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
         }
 
-        
 
         protected void Application_BeginRequest(object sender, EventArgs e)
         {

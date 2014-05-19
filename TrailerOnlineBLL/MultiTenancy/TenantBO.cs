@@ -120,7 +120,6 @@ namespace TrailerOnline.BLL.MultiTenancy
         /// </summary>
         public string Owner { get; set; }
 
-
         /// <summary>
         /// If the user presented is the tenant
         /// </summary>

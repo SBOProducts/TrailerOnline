@@ -22,15 +22,8 @@
                 <input type="submit" value="Login" class="button radius" />
             </p>
         }
-    </div>
-
-    <div class="large-4 columns">
-        
-        <h2>Register</h2>
-        
-        <h3 class="subheader">Don't have a Website?</h3>
-        
-        <h4>@Html.ActionLink("Get One Now!", "Register", "Account")</h4>
+        <h3>Don't have a Login?</h3>
+        <h4>@Html.ActionLink("Register Now", "Register", "Account", new { tenant = TenantBLL.CurrentTenant.Name }, new { @class = "button radius" })</h4>
         
     </div>
 </div>
