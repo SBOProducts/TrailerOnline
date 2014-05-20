@@ -12,11 +12,7 @@
       <li class="divider"></li>
       <li>@Html.ActionLink("Home", "Index", "Home")</li>
       <li class="divider"></li>
-      <li class="has-dropdown">
-          @Html.ActionLink("Inventory", "Categories", "Product")
-        <ul class="dropdown">
-        </ul>
-      </li>
+      <li>@Html.ActionLink("Demo", "Categories", "Product")</li>
       <li class="divider"></li>
       <li>@Html.ActionLink("About Us", "About", "Home")</li>
       <li class="divider"></li>
@@ -24,23 +20,8 @@
       <li class="divider"></li>
     </ul>
     <ul class="right">
-            <li class="has-dropdown">
-                @Html.ActionLink("My Account", "Index", "MyAccount")
-                
-                <ul class="dropdown">
-                    @if(User.Identity.IsAuthenticated){
-                        <li>@Html.ActionLink("Websites", "Settings", "MyAccount")</li>
-                        <li>@Html.ActionLink("Payments", "Payments", "MyAccount")</li>
-                        <li>@Html.ActionLink("Profile", "Profile", "MyAccount")</li>
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Register", "Regiseter")</li>
-                    }
-                </ul>
-                    
-                
-            </li>
+        <li>@Html.ActionLink("My Account", "Index", "MyAccount")</li>
+        <li>@Html.ActionLink("Login", "Login", "MyAccount")</li>
     </ul>
   </section>
 </nav>

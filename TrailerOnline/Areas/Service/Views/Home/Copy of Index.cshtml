@@ -1,0 +1,167 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="small-12 columns">
+        <h1>Trailer Cloud</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="medium-6 columns">
+        <p>
+            Trailer Cloud is a cloud-based solution for managing your trailer business online. 
+        </p>
+        <h4 class="subheader">Why Use Trailer Cloud?</h4>
+        <ul>
+            <li>Free to use</li>
+            <li>Incredibly simple</li>
+            <li>Works on all devices (phone, tablet, pc)</li>
+            <li>Powered by the Cloud</li>
+        </ul>
+        <blockquote class="bg bg-blue">
+            Trailer Cloud does what I need it to do without getting in my way, and their support is incredible.
+            <cite>Stan Brower, FL</cite>
+        </blockquote>
+    </div>
+    <div class="medium-6 columns callout panel radius">
+        <h3>
+            Free Website
+        </h3>
+        <p>
+            Create your Trailer Cloud website today for free! Use the site for as long as you want
+            and pay nothing. 
+        </p>
+        @using (Html.BeginForm())
+        {
+            <p id="NameVerification">
+                <span id="sitename"></span>.trailercloud.com <span id="status"></span>
+            </p>
+            <p>
+                <input type="text" id="WebsiteName" placeholder="Website Name" />
+            </p>
+            <p>
+                <input type="text" placeholder="Your Email Address" />
+            </p>
+            <p>
+                <input type="password" placeholder="Password" />
+            </p>
+            <p>
+                <input type="submit" value="Register" class="button radius" />
+            </p>
+        }
+    </div>
+</div>
+<div class="row">
+    <div class="medium-4 columns">
+        <h3 class="subheader text-center">Simple</h3>
+        <p>
+            Drag and drop uploading, click and type updating, and an intuitive design make Trailer Cloud
+            increadibly easy use. <br />
+            @Html.ActionLink("more...", "Simple", "Features")
+        </p>
+    </div>
+    <div class="medium-4 columns">
+        <h3 class="subheader text-center">Affordable</h3>
+        <p>
+            We offer a free version of our service that you can use as long as you want.
+            We also offer a paid version with more storage and features for only $49.95 / month. <br />
+            @Html.ActionLink("more...", "Affordable", "Features")
+        </p>
+    </div>
+    <div class="medium-4 columns">
+        <h3 class="subheader text-center">Strong</h3>
+        <p>
+            Our service runs in the cloud for maximum up time and scalability. You won't find your
+            site running slow or down for maintainance. <br />
+            @Html.ActionLink("more...", "Strong", "Features")
+        </p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="small-12 columns">
+        <table style="width:100%;">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Free</th>
+                    <th>Premium</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Drag & Drop Upload</th>
+                    <td>&#x2713;</td>
+                    <td>&#x2713;</td>
+                </tr>
+                <tr>
+                    <th>Click & Type Editing</th>
+                    <td>&#x2713;</td>
+                    <td>&#x2713;</td>
+                </tr>
+                <tr>
+                    <th>Works on all devices</th>
+                    <td>&#x2713;</td>
+                    <td>&#x2713;</td>
+                </tr>
+                <tr>
+                    <th>Number of Categories</th>
+                    <td>5</td>
+                    <td>Unlimited</td>
+                </tr>
+                <tr>
+                    <th>Number of Products</th>
+                    <td>10</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <th>Custom Domain Name</th>
+                    <td>&#x2717;</td>
+                    <td>&#x2713;</td>
+                </tr>
+                <tr>
+                    <th>Price</th>
+                    <td>$0.00 / Month</td>
+                    <td>$49.95 / Month</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@section Footer{
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $("#WebsiteName").keyup(function (event) {
+
+                var name = $(this).val();
+                name = filterName(name);
+
+                if (name.length > 0)
+                    $("#NameVerification").show();
+                else
+                    $("#NameVerification").hide();
+
+                $("#sitename").text(name);
+
+                if (isValidName(name))
+                    $("#status").text("is available").removeClass("invalid").addClass("valid");
+                else
+                    $("#status").text("is not available").removeClass("valid").addClass("invalid");
+
+            });
+        });
+
+        function filterName(name) {
+            return name.replace(/[^\w]/g, '');
+        }
+
+        function isValidName(name) {
+            return name.length > 4;
+        }
+    })(jQuery);
+</script>
+}

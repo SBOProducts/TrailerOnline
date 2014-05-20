@@ -201,6 +201,42 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Service\Content\Site.css" />
+    <Content Include="Areas\Service\Content\social-icons\addthis.png" />
+    <Content Include="Areas\Service\Content\social-icons\aim.png" />
+    <Content Include="Areas\Service\Content\social-icons\apple.png" />
+    <Content Include="Areas\Service\Content\social-icons\behance.png" />
+    <Content Include="Areas\Service\Content\social-icons\blogger.png" />
+    <Content Include="Areas\Service\Content\social-icons\delicious.png" />
+    <Content Include="Areas\Service\Content\social-icons\deviantart.png" />
+    <Content Include="Areas\Service\Content\social-icons\digg.png" />
+    <Content Include="Areas\Service\Content\social-icons\dribbble.png" />
+    <Content Include="Areas\Service\Content\social-icons\email.png" />
+    <Content Include="Areas\Service\Content\social-icons\facebook.png" />
+    <Content Include="Areas\Service\Content\social-icons\flickr.png" />
+    <Content Include="Areas\Service\Content\social-icons\forrst.png" />
+    <Content Include="Areas\Service\Content\social-icons\github.png" />
+    <Content Include="Areas\Service\Content\social-icons\google.png" />
+    <Content Include="Areas\Service\Content\social-icons\googleplus.png" />
+    <Content Include="Areas\Service\Content\social-icons\lastfm.png" />
+    <Content Include="Areas\Service\Content\social-icons\linkedin.png" />
+    <Content Include="Areas\Service\Content\social-icons\myspace.png" />
+    <Content Include="Areas\Service\Content\social-icons\netvibes.png" />
+    <Content Include="Areas\Service\Content\social-icons\paypal.png" />
+    <Content Include="Areas\Service\Content\social-icons\pinterest.png" />
+    <Content Include="Areas\Service\Content\social-icons\reddit.png" />
+    <Content Include="Areas\Service\Content\social-icons\rss.png" />
+    <Content Include="Areas\Service\Content\social-icons\sharethis.png" />
+    <Content Include="Areas\Service\Content\social-icons\skype.png" />
+    <Content Include="Areas\Service\Content\social-icons\slashdot.png" />
+    <Content Include="Areas\Service\Content\social-icons\stumbleupon.png" />
+    <Content Include="Areas\Service\Content\social-icons\technorati.png" />
+    <Content Include="Areas\Service\Content\social-icons\tumblr.png" />
+    <Content Include="Areas\Service\Content\social-icons\twitter.png" />
+    <Content Include="Areas\Service\Content\social-icons\vimeo.png" />
+    <Content Include="Areas\Service\Content\social-icons\yahoo.png" />
+    <Content Include="Areas\Service\Content\social-icons\yelp.png" />
+    <Content Include="Areas\Service\Content\social-icons\youtube.png" />
+    <Content Include="Areas\Service\Content\social.css" />
     <Content Include="Content\default\default.css" />
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\foundation.css" />
@@ -273,6 +309,10 @@
     <Content Include="Areas\Service\Views\Features\Affordable.cshtml" />
     <Content Include="Areas\Service\Views\Features\Simple.cshtml" />
     <Content Include="Areas\Service\Views\Features\Strong.cshtml" />
+    <Content Include="Areas\Service\Views\Shared\_Footer.cshtml" />
+    <Content Include="Areas\Service\Content\social-icons\Thumbs.db" />
+    <Content Include="Areas\Service\Views\Home\Copy of Index.cshtml" />
+    <Content Include="Areas\Service\Views\Shared\_LayoutMinimal.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\box-closed.png" />
     <Content Include="Images\box-open.png" />
@@ -352,6 +392,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Service\Images\" />
     <Folder Include="Areas\Service\Models\" />
   </ItemGroup>
   <ItemGroup>

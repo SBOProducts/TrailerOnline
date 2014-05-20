@@ -1,84 +1,96 @@
 ﻿@{
     ViewBag.Title = "Index";
+    Layout = "~/Areas/Service/Views/Shared/_LayoutMinimal.cshtml";
+}
+@section Header{
+    <style type="text/css">
+        body {
+            background: #3A92C8;
+            background: radial-gradient(circle, #94D2F8, #3A92C8) repeat scroll 0 0 rgba(0, 0, 0, 0);
+        }
+        section {
+            background-color:#fff;
+            padding:20px;
+            border-radius: 5px;
+            margin-top:15px;
+            border: 1px solid #6FA3C4;
+            box-shadow: 0 0 125px rgba(255, 255, 255, 0.35);
+        }
+        #Welcome {
+            margin-top: 100px;
+        }
+        #Devices {
+            margin-top: -80px;
+        }
+        #Login {
+            font-size:0.8em;
+        }
+        
+        #Login input, #Register input {
+            margin: 6px;
+        }
+        ul li {
+            font-size: 0.8em;
+        }
+    </style>
 }
 
-<div class="row">
-    <div class="small-12 columns">
-        <h1>Trailer Cloud</h1>
-    </div>
-</div>
+<div class="row" id="Welcome">
+    <div class="medium-8 columns">
+        <section>
+            <div class="row">
+                <div class="medium-6 columns">
+                    <h4>Welcome to Trailer Cloud.</h4>
+                    <p>
+                        Manage your trailer sales in the cloud
+                    </p>
+                    <ul>
+                        <li>Free to use</li>
+                        <li>Incredibly simple</li>
+                        <li>Works on all devices (phone, tablet, pc)</li>
+                        <li>Powered by the Cloud</li>
+                    </ul>
 
-<div class="row">
-    <div class="medium-6 columns">
-        <p>
-            Trailer Cloud is a cloud-based solution for managing your trailer business online. 
-        </p>
-        <h4 class="subheader">Why Use Trailer Cloud?</h4>
-        <ul>
-            <li>Free to use</li>
-            <li>Incredibly simple</li>
-            <li>Works on all devices (phone, tablet, pc)</li>
-            <li>Powered by the Cloud</li>
-        </ul>
-        <blockquote>
-            Trailer Cloud does what I need it to do without getting in my way, and their support is incredible.
-            <cite>Stan Brower, FL</cite>
-        </blockquote>
+                    
+                </div>
+
+                <div class="medium-6 columns">
+                    <img id="Devices" src="@Url.Content("~/Areas/Service/Images/Devices.png")" alt="displays well on phone, tablet, and pc" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="medium-12 columns">
+                    <blockquote class="bg bg-blue">
+                        Trailer Cloud does everything I need it to do without getting in my way. And their support has been incredible.
+                        <cite>Stan Brower, FL</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="medium-6 columns callout panel radius">
-        <h3>
-            Free Website
-        </h3>
-        <p>
-            Create your Trailer Cloud website today for free! Use the site for as long as you want
-            and pay nothing. 
-        </p>
-        @using (Html.BeginForm())
-        {
+
+    <div class="medium-4 columns">
+        <section id="Login">
+            <input type="text" placeholder="Email" />
+            <input type="password" placeholder="Password" />
+            <input type="checkbox" /> Remember me · @Html.ActionLink("Forgot password?", "ForgotPassword")
+            <input type="submit" value="Sign in" class="button radius" />
+        </section>
+        <section id="Register">
+            <strong>New to Trailer Cloud</strong> Sign up
+            <hr />
             <p id="NameVerification">
                 <span id="sitename"></span>.trailercloud.com <span id="status"></span>
             </p>
-            <p>
                 <input type="text" id="WebsiteName" placeholder="Website Name" />
-            </p>
-            <p>
                 <input type="text" placeholder="Your Email Address" />
-            </p>
-            <p>
                 <input type="password" placeholder="Password" />
+                <input type="submit" value="Register" class="success button radius" />
             </p>
-            <p>
-                <input type="submit" value="Register" class="button radius" />
-            </p>
-        }
+        </section>
     </div>
 </div>
-<div class="row">
-    <div class="medium-4 columns">
-        <h3 class="subheader text-center">Simple</h3>
-        <p>
-            Drag and drop uploading, click and type updating, and an intuitive design make Trailer Cloud
-            increadibly easy use. <br />
-            @Html.ActionLink("more...", "Simple", "Features")
-        </p>
-    </div>
-    <div class="medium-4 columns">
-        <h3 class="subheader text-center">Affordable</h3>
-        <p>
-            We offer a free version of our service that you can use as long as you want.
-            We also offer a paid version with more storage and features for only $49.95 / month. <br />
-            @Html.ActionLink("more...", "Affordable", "Features")
-        </p>
-    </div>
-    <div class="medium-4 columns">
-        <h3 class="subheader text-center">Strong</h3>
-        <p>
-            Our service runs in the cloud for maximum up time and scalability. You won't find your
-            site running slow or down for maintainance. <br />
-            @Html.ActionLink("more...", "Strong", "Features")
-        </p>
-    </div>
-</div>
+
 @section Footer{
 <script type="text/javascript">
     (function ($) {
