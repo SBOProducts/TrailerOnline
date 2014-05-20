@@ -10,8 +10,7 @@ namespace TrailerOnline.Models
 {
     public class UsersContext : DbContext
     {
-        public UsersContext()
-            : base("dbo")
+        public UsersContext() : base("dbo")
         {
         }
 

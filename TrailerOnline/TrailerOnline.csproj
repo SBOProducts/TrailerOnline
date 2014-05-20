@@ -182,6 +182,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Service\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Service\Controllers\FeaturesController.cs" />
     <Compile Include="Areas\Service\Controllers\HomeController.cs" />
     <Compile Include="Areas\Service\ServiceAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -268,6 +270,9 @@
     <Content Include="Areas\Service\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Service\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Service\Views\Shared\_TopMenu.cshtml" />
+    <Content Include="Areas\Service\Views\Features\Affordable.cshtml" />
+    <Content Include="Areas\Service\Views\Features\Simple.cshtml" />
+    <Content Include="Areas\Service\Views\Features\Strong.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\box-closed.png" />
     <Content Include="Images\box-open.png" />

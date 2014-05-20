@@ -1,1 +1,30 @@
 ﻿
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Proxima Nova","proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.bg h1, .bg h2, .bg h3, .bg h4, .bg h5, .bg p, .bg label, .bg li, .bg a, .bg blockquote, .bg cite
+{
+    
+    color:#fff;
+}
+
+.bg-orange { 
+    background-color: #FF6908; 
+    padding:20px;
+}
+
+.bg-blue {
+    background-color: #074E68;
+    padding:20px;
+}
+
+#NameVerification {
+    margin: 0;
+    font-size:0.9em;
+    display:none;
+}
+
+#sitename { font-weight: bold; }
+.valid { color: green; }
+.invalid { color: red; }
