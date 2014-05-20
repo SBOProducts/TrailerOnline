@@ -164,14 +164,7 @@ namespace TrailerOnline.BLL.MultiTenancy
 
             // The tenant could not be found
             if (tenant == null)
-<<<<<<< HEAD
                 TenantNotFoundRedirect(Context, host);
-=======
-            {
-                //throw new TenantNotFoundException(tenantName);
-                tenant = new DefaultTenantBO();
-            }
->>>>>>> 48e4de67531326d7d333cd89dc790132fc7ffe1d
 
             // add tenant to data items
             Context.Items.Add(DataItemName, tenant);
