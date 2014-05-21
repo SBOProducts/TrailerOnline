@@ -13,6 +13,8 @@
     
     @RenderSection("Header", false)
     <script type="text/javascript" src="/Scripts/modernizr-2.6.2.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
 </head>
 <body>
 
@@ -20,10 +22,21 @@
 
     @RenderBody()
 
+    <div class="row">
+        <div class="medium-12 columns">
+            <div id="Links">
+                @Html.ActionLink("Home", "Index", "Home")
+                <a href="http://demo.trailercloud.com">Demo</a>
+                @Html.ActionLink("About", "About")
+                @Html.ActionLink("Blog", "Blog")
+                @Html.ActionLink("Help", "Help")
+                &copy; @DateTime.Now.Year Trailer Cloud
+            </div>
+        </div>
+    </div>
     
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+    
     <script type="text/javascript" src="@Url.Content("~/Scripts/foundation/fastclick.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/foundation/jquery.cookie.js")"></script>
     <script type="text/javascript" src="@Url.Content("~/Scripts/foundation/foundation.js")"></script>

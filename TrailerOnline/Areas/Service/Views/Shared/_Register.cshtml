@@ -1,0 +1,84 @@
+﻿@model TrailerOnline.Models.CreateWebsiteModel
+
+@using(Html.BeginForm("Register", "Account")){
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary();
+    
+    <p id="NameVerification">
+        <span id="sitename"></span>.trailercloud.com <img src="@Url.Content("~/Areas/Service/Images/spinnerLarge.gif")" id="searching" /> <span id="status"></span>
+    </p>
+    @Html.TextBoxFor(m => m.TenantName, new { id = "WebsiteName", placeholder = "Website Name" })
+    @Html.ValidationMessageFor(m => m.TenantName);
+    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email Address" })
+    @Html.ValidationMessageFor(m => m.UserName);
+    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
+    @Html.ValidationMessageFor(m => m.Password);
+    <input type="submit" value="Register" class="success button radius" />
+}
+
+<script type="text/javascript">
+    (function ($) {
+        $(document).ready(function () {
+            $("#Devices").click(function () {
+                location.href = "http://demo.trailercloud.com";
+            });
+
+            $("#WebsiteName").keyup(function (event) {
+
+                var name = $(this).val();
+                name = filterName(name);
+
+                if (name.length > 0)
+                    $("#NameVerification").show();
+                else
+                    $("#NameVerification").hide();
+
+                $("#sitename").text(name);
+
+                ValidateName(name);
+
+            });
+        });
+
+        function filterName(name) {
+            return name.replace(/[^\w]/g, '');
+        }
+
+        function ValidateName(name) {
+
+            if (name.length < 4) {
+                ShowStatus(false, "is too short");
+                return;
+            }
+
+            $("#searching").show();
+            
+
+            $.ajax({
+                url: "@Url.Action("CheckWebsiteName", "Account")",
+                data: { name: name },
+                type: "POST",
+                success: function (data) {
+                    $("#searching").hide();
+                    if (data == false)
+                        ShowStatus(true, "is available");
+                    else
+                        ShowStatus(false, "is not available");
+                }, error: function (error) {
+                    ShowStatus(false, error);
+                }
+            });
+
+        }
+
+        function ShowStatus(valid, message) {
+            $("#searching").hide();
+            var status = $("#status");
+            status.text(message);
+            if (valid)
+                status.removeClass("invalid").addClass("valid");
+            else
+                status.removeClass("valid").addClass("invalid");
+        }
+    })(jQuery);
+</script>

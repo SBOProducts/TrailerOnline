@@ -87,9 +87,9 @@ namespace TrailerOnline.Controllers
 
                     // create the new tenant
                     TenantBO currentTenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
-                    TenantBLL.Create(model.TenantName, model.BusinessName, model.UserName, currentTenant.TenantId);
+                    TenantBLL.Create(model.TenantName,  model.UserName);
 
-                    return RedirectToAction("Index", "Home", new { tenant = model.TenantName });
+                    return RedirectToAction("VerifyAccount", "Account", new { tenant = model.TenantName });
                 }
                 catch (MembershipCreateUserException e)
                 {

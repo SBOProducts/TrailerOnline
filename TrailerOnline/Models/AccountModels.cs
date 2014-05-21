@@ -82,10 +82,11 @@ namespace TrailerOnline.Models
         [Display(Name = "Password")]
         public string Password { get; set; }
 
-        [DataType(DataType.Password)]
+        /*[DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        */
     }
 
     public class CreateWebsiteModel : RegisterModel
@@ -94,10 +95,6 @@ namespace TrailerOnline.Models
         [Display(Name="Website Name")]
         [RegularExpression("\\w+")]
         public string TenantName { get; set; }
-
-        [Required]
-        [Display(Name = "Business Name")]
-        public string BusinessName { get; set; }
     }
 
     public class ExternalLogin

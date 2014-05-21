@@ -237,6 +237,8 @@
     <Content Include="Areas\Service\Content\social-icons\yelp.png" />
     <Content Include="Areas\Service\Content\social-icons\youtube.png" />
     <Content Include="Areas\Service\Content\social.css" />
+    <Content Include="Areas\Service\Images\Devices.png" />
+    <Content Include="Areas\Service\Images\spinnerLarge.gif" />
     <Content Include="Content\default\default.css" />
     <Content Include="Content\foundation\app.css" />
     <Content Include="Content\foundation\foundation.css" />
@@ -313,6 +315,9 @@
     <Content Include="Areas\Service\Content\social-icons\Thumbs.db" />
     <Content Include="Areas\Service\Views\Home\Copy of Index.cshtml" />
     <Content Include="Areas\Service\Views\Shared\_LayoutMinimal.cshtml" />
+    <Content Include="Areas\Service\Views\Shared\_Register.cshtml" />
+    <Content Include="Areas\Service\Views\Account\Register.cshtml" />
+    <Content Include="Areas\Service\Views\Account\VerifyAccount.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\box-closed.png" />
     <Content Include="Images\box-open.png" />
@@ -392,7 +397,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Service\Images\" />
     <Folder Include="Areas\Service\Models\" />
   </ItemGroup>
   <ItemGroup>

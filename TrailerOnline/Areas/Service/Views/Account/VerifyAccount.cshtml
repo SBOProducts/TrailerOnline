@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "VerifyAccount";
+    Layout = "~/Areas/Service/Views/Shared/_LayoutMinimal.cshtml";
+}
+
+<div class="row">
+    <div class="large-8 columns">
+        <section>
+            <h2>Please Verify Your Account</h2>
+
+            <p>
+                A verification email was sent to your email address. 
+                Please click on the link contained within the email to verify your account. 
+            </p>
+            @using (Html.BeginForm())
+            {
+
+            }
+            <p>
+                If you do not receive an email within 10 minutes you may request a new verification 
+                email to be sent using the button below.
+            </p>
+            <p>
+                @Html.ActionLink("Resend Verification Email", "ResendVerificationEmail", "Account", null, new { @class = "button radius" })
+            </p>
+
+        </section>
+    </div>
+</div>
+

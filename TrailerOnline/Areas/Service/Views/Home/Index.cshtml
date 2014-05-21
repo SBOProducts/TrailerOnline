@@ -4,23 +4,13 @@
 }
 @section Header{
     <style type="text/css">
-        body {
-            background: #3A92C8;
-            background: radial-gradient(circle, #94D2F8, #3A92C8) repeat scroll 0 0 rgba(0, 0, 0, 0);
-        }
-        section {
-            background-color:#fff;
-            padding:20px;
-            border-radius: 5px;
-            margin-top:15px;
-            border: 1px solid #6FA3C4;
-            box-shadow: 0 0 125px rgba(255, 255, 255, 0.35);
-        }
+        
         #Welcome {
             margin-top: 100px;
         }
         #Devices {
             margin-top: -80px;
+            cursor:pointer;
         }
         #Login {
             font-size:0.8em;
@@ -32,6 +22,10 @@
         ul li {
             font-size: 0.8em;
         }
+        
+        #searching {
+            width:28px;
+        }
     </style>
 }
 
@@ -39,19 +33,17 @@
     <div class="medium-8 columns">
         <section>
             <div class="row">
-                <div class="medium-6 columns">
+                <div class="medium-6 columns" style="margin-bottom:100px;">
                     <h4>Welcome to Trailer Cloud.</h4>
                     <p>
-                        Manage your trailer sales in the cloud
+                        Trailer sales in the cloud.
                     </p>
                     <ul>
-                        <li>Free to use</li>
+                        <li>Free and paid versions</li>
                         <li>Incredibly simple</li>
                         <li>Works on all devices (phone, tablet, pc)</li>
                         <li>Powered by the Cloud</li>
                     </ul>
-
-                    
                 </div>
 
                 <div class="medium-6 columns">
@@ -67,6 +59,7 @@
                 </div>
             </div>
         </section>
+ 
     </div>
 
     <div class="medium-4 columns">
@@ -79,49 +72,21 @@
         <section id="Register">
             <strong>New to Trailer Cloud</strong> Sign up
             <hr />
-            <p id="NameVerification">
-                <span id="sitename"></span>.trailercloud.com <span id="status"></span>
-            </p>
-                <input type="text" id="WebsiteName" placeholder="Website Name" />
-                <input type="text" placeholder="Your Email Address" />
-                <input type="password" placeholder="Password" />
-                <input type="submit" value="Register" class="success button radius" />
-            </p>
+            @Html.Partial("_Register")
         </section>
     </div>
 </div>
+
+
 
 @section Footer{
 <script type="text/javascript">
     (function ($) {
         $(document).ready(function () {
-            $("#WebsiteName").keyup(function (event) {
-
-                var name = $(this).val();
-                name = filterName(name);
-
-                if (name.length > 0)
-                    $("#NameVerification").show();
-                else
-                    $("#NameVerification").hide();
-
-                $("#sitename").text(name);
-
-                if (isValidName(name))
-                    $("#status").text("is available").removeClass("invalid").addClass("valid");
-                else
-                    $("#status").text("is not available").removeClass("valid").addClass("invalid");
-
+            $("#Devices").click(function () {
+                location.href = "http://demo.trailercloud.com";
             });
         });
-
-        function filterName(name) {
-            return name.replace(/[^\w]/g, '');
-        }
-
-        function isValidName(name) {
-            return name.length > 4;
-        }
     })(jQuery);
 </script>
 }

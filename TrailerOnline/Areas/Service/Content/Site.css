@@ -1,4 +1,30 @@
-﻿
+﻿body {
+    background: #3A92C8;
+    background: radial-gradient(circle, #94D2F8, #3A92C8) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+section {
+    background-color:#fff;
+    padding:20px;
+    border-radius: 5px;
+    margin-top:15px;
+    border: 1px solid #6FA3C4;
+    box-shadow: 0 0 125px rgba(255, 255, 255, 0.35);
+}
+
+#Links{
+            display: inline-block;
+            margin-top: 30px;
+            color:#fff;
+            font-size:0.8em;
+        }
+            #Links a {
+                color: #fff;
+                padding:5px;
+            }
+            #Links a:hover {
+                text-decoration:underline;
+            }
+
 h1, h2, h3, h4, h5, h6 {
     font-family: "Proxima Nova","proxima-nova","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
