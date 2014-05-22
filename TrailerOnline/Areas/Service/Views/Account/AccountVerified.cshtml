@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "AccountVerified";
+}
+
+<div class="row">
+    <div class="large-8 columns">
+        <section>
+            <h2>Thank you for verifying your account</h2>
+            <h3 class="subheader">Now let's have fun!</h3>
+
+            @if (User.IsInRole(TrailerOnline.BLL.RoleBLL.Tenant))
+            {
+                Html.Partial("_CreateWebsite");
+            }
+            else
+            {
+                <h4>Login to create your website</h4>
+                @Html.Partial("_Login")
+            }
+
+
+
+        </section>
+    </div>
+</div>

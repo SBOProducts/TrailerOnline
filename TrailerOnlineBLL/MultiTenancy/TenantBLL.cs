@@ -230,7 +230,7 @@ namespace TrailerOnline.BLL.MultiTenancy
         /// <param name="TenantTitle"></param>
         /// <param name="UserName"></param>
         /// <returns></returns>
-        public static TenantBO Create(string TenantName, string UserName)
+        public static TenantBO Create(string TenantName, string UserName, string BusinessName)
         {
             TenantBO bo = new TenantBO()
             {
@@ -239,7 +239,7 @@ namespace TrailerOnline.BLL.MultiTenancy
                 Layout = "~/Views/Shared/_defaultLayout.cshtml",
                 Owner = UserName,
                 Theme = "~/Content/default/default.css",
-                Title = TenantName,
+                Title = BusinessName,
                 Promotional = true,
                 ReferredByTenantId = 0
             };

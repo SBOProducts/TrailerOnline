@@ -13,12 +13,108 @@ namespace TrailerOnline.Areas.Service.Controllers
 {
     public class AccountController : Controller
     {
+
         public ActionResult Index()
         {
             return View();
         }
 
+        [Authorize(Roles = RoleBLL.Tenant)]
+        public ActionResult CreateWebsite()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize(Roles = RoleBLL.Tenant)]
+        public ActionResult CreateWebsite(CreateWebsiteModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            try
+            {
+                TenantBO tenant = TenantBLL.Create(model.TenantName, User.Identity.Name, model.BusinessName);
+                return RedirectToAction("WebsiteCreated", "Account", new { id = tenant.TenantId });
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
+        }
+
+        [Authorize(Roles = RoleBLL.Tenant)]
+        public ActionResult WebsiteCreated(int Id)
+        {
+            TenantBO tenant = TenantBLL.GetTenantById(Id);
+            return View(tenant);
+        }
+
+        #region Login
+
+
+        [AllowAnonymous]
+        public ActionResult Login(string returnUrl)
+        {
+            ViewBag.ReturnUrl = returnUrl;
+            return View();
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(LoginModel model, string returnUrl)
+        {
+            if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
+            {
+                TenantBO tenant = TenantBLL.GetTenantByOwner(model.UserName);
+                if (tenant == null)
+                    return RedirectToAction("CreateWebsite", "Account");
+                else
+                    return Redirect(tenant.Host);
+            }
+
+            // If we got this far, something failed, redisplay form
+            ModelState.AddModelError("", "The user name or password provided is incorrect.");
+            return View(model);
+        }
+
+        
         /// <summary>
+        /// A helper method that directs the user to the return url
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        #endregion
+
+
+        #region Registration
+
+        /// <summary>
+        /// Confirms that the account has been verified
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult AccountVerified()
+        {
+            return View();
+        }
+
+
+            /// <summary>
         /// Used to determine if a website is available or not
         /// </summary>
         /// <param name="name"></param>
@@ -33,16 +129,25 @@ namespace TrailerOnline.Areas.Service.Controllers
             return Json(TenantBLL.TenantExistsByHost(host));
         }
 
+        /// <summary>
+        /// Shows a form for registering an account
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Register()
         {
             return View();
         }
 
 
+        /// <summary>
+        /// Creates a new registration from the submitted information
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(CreateWebsiteModel model)
+        public ActionResult Register(RegisterModel model)
         {
 
             if (ModelState.IsValid)
@@ -53,11 +158,10 @@ namespace TrailerOnline.Areas.Service.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, requireConfirmationToken: true);
                     Roles.AddUserToRole(model.UserName, RoleBLL.Tenant);
-
                     WebSecurity.Login(model.UserName, model.Password);
 
                     // create the new tenant
-                    TenantBLL.Create(model.TenantName, model.UserName);
+                    //TenantBLL.Create(model.TenantName, model.UserName);
 
                     return RedirectToAction("VerifyAccount", "Account");
                 }
@@ -75,14 +179,28 @@ namespace TrailerOnline.Areas.Service.Controllers
             return View(model);
         }
 
+
         /// <summary>
         /// Provides a form for the user to verify their account
         /// </summary>
         /// <returns></returns>
-        public ActionResult VerifyAccount(string Id)
+        public ActionResult VerifyAccount(string id)
         {
-            return View();
+            // if the token wasn't specified then return the view
+            if (string.IsNullOrEmpty(id))
+                return View();
+
+            // if the token isn't correct then inform them
+            if (!WebSecurity.ConfirmAccount(id))
+            {
+                ViewBag.Message = "The security token is invalid. Please try again by using the button below.";
+                return View();
+            }
+
+            // if the account is confirmed then show verified
+            return RedirectToAction("AccountVerified", "Account");
         }
+
 
         /// <summary>
         /// Provides friendly messages for errors encountered during registration
@@ -126,5 +244,7 @@ namespace TrailerOnline.Areas.Service.Controllers
                     return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
             }
         }
+
+        #endregion
     }
 }

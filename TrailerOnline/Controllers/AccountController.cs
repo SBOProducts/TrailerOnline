@@ -75,7 +75,7 @@ namespace TrailerOnline.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(CreateWebsiteModel model)
+        public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
@@ -85,11 +85,6 @@ namespace TrailerOnline.Controllers
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password);
                     WebSecurity.Login(model.UserName, model.Password);
 
-                    // create the new tenant
-                    TenantBO currentTenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
-                    TenantBLL.Create(model.TenantName,  model.UserName);
-
-                    return RedirectToAction("VerifyAccount", "Account", new { tenant = model.TenantName });
                 }
                 catch (MembershipCreateUserException e)
                 {
