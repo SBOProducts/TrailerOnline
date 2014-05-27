@@ -158,10 +158,8 @@ namespace TrailerOnline.Areas.Service.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, requireConfirmationToken: true);
                     Roles.AddUserToRole(model.UserName, RoleBLL.Tenant);
-                    WebSecurity.Login(model.UserName, model.Password);
-
-                    // create the new tenant
-                    //TenantBLL.Create(model.TenantName, model.UserName);
+                    //WebSecurity.Login(model.UserName, model.Password);
+                    
 
                     return RedirectToAction("VerifyAccount", "Account");
                 }
@@ -197,6 +195,7 @@ namespace TrailerOnline.Areas.Service.Controllers
                 return View();
             }
 
+            
             // if the account is confirmed then show verified
             return RedirectToAction("AccountVerified", "Account");
         }
