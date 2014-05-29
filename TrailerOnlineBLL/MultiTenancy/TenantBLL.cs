@@ -105,7 +105,7 @@ namespace TrailerOnline.BLL.MultiTenancy
         /// <returns></returns>
         public static bool IsDefaultHost(string HostName)
         {
-            return string.Compare(HostName, DefaultHost, true) == 0;
+            return string.Compare(HostName.Replace("www.", ""), DefaultHost, true) == 0;
         }
 
 
