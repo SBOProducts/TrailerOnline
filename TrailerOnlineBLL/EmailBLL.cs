@@ -42,17 +42,6 @@ namespace TrailerOnline.BLL
                 Console.WriteLine(ex.Message);
             }
 
-            /*
-
-            var from = new MailAddress("john@contoso.com");
-            var to   = new MailAddress[] { new MailAddress("ntownsend2@mt.gov") };
-            var subject = "Testing";
-            var html = "<p>Hello World in html</p>";
-            var text = "Hello World plain text!";
-
-            SendGridMessage message = new SendGridMessage(from, to, subject, html, text);
-            
-            */
         }
     }
 }

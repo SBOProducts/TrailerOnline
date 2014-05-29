@@ -3,5 +3,17 @@
     ViewBag.Title = "NotFound";
 }
 
-<h2>Not Found</h2>
-<h3>Tenant: @ViewBag.Tenant</h3>
+<div class="row">
+    <div class="large-8 columns">
+        <section>
+            <h2>Website Not Found</h2>
+            <h3>Website: @ViewBag.Tenant</h3>
+
+            <p>
+                This website could not be located. If you believe this is in error please check the spelling and try again.
+                If you continue having trouble please contact our @Html.ActionLink("Help Department", "Contact", "Help") for assistance.
+            </p>
+        </section>
+    </div>
+</div>
+
