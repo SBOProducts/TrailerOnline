@@ -184,6 +184,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Service\Controllers\AccountController.cs" />
     <Compile Include="Areas\Service\Controllers\FeaturesController.cs" />
+    <Compile Include="Areas\Service\Controllers\HelpController.cs" />
     <Compile Include="Areas\Service\Controllers\HomeController.cs" />
     <Compile Include="Areas\Service\ServiceAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -322,7 +323,7 @@
     <Content Include="Areas\Service\Views\Account\Login.cshtml" />
     <Content Include="Areas\Service\Views\Account\CreateWebsite.cshtml" />
     <Content Include="Areas\Service\Views\Account\WebsiteCreated.cshtml" />
-    <Content Include="Areas\Service\Views\Home\TestEmail.cshtml" />
+    <Content Include="Areas\Service\Views\Help\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\box-closed.png" />
     <Content Include="Images\box-open.png" />

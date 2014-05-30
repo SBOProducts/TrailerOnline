@@ -4,7 +4,6 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary();
     
-    
 
     @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email Address" })
     @Html.ValidationMessageFor(m => m.UserName);

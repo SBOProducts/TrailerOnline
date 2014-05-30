@@ -4,44 +4,39 @@ using System.Net.Mail;
 using SendGrid;
 using SendGrid.SmtpApi;
 using System.Net.Mime;
+using System.Configuration;
 
 
 namespace TrailerOnline.BLL
 {
     public class EmailBLL
     {
-        public static void Test()
+        public static void Send(string FromAddress, string FromName, string ToAddress, string ToName, string Subject, string BodyHtml, string BodyText)
         {
+            MailMessage mailMsg = new MailMessage();
 
-            try
-            {
-                MailMessage mailMsg = new MailMessage();
+            // to & from
+            mailMsg.To.Add(new MailAddress(ToAddress, ToName));
+            mailMsg.From = new MailAddress(FromAddress, FromName);
 
-                // To
-                mailMsg.To.Add(new MailAddress("ntownsend2@mt.gov", "Nathan Townsend"));
+            // Subject and multipart/alternative Body
+            mailMsg.Subject = Subject;
+            mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(BodyHtml, null, MediaTypeNames.Text.Html));
+            mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(BodyText, null, MediaTypeNames.Text.Plain));
 
-                // From
-                mailMsg.From = new MailAddress("ntownsend2@gmail.com", "From Name");
+            // Init SmtpClient and send
+            string host = ConfigurationManager.AppSettings["SMTPHost"];
+            int port = Convert.ToInt32(ConfigurationManager.AppSettings["SMTPPort"]);
+            string login = ConfigurationManager.AppSettings["SMTPLogin"];
+            string password = ConfigurationManager.AppSettings["SMTPPassword"];
+            SmtpClient smtpClient = new SmtpClient(host, port);
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(login, password);
+            smtpClient.Credentials = credentials;
 
-                // Subject and multipart/alternative Body
-                mailMsg.Subject = "subject";
-                string text = "text body";
-                string html = @"<p>html body</p>";
-                mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
-                mailMsg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(html, null, MediaTypeNames.Text.Html));
-
-                // Init SmtpClient and send
-                SmtpClient smtpClient = new SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
-                System.Net.NetworkCredential credentials = new System.Net.NetworkCredential("sboproducts", "snap01234");
-                smtpClient.Credentials = credentials;
-
-                smtpClient.Send(mailMsg);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
+            smtpClient.Send(mailMsg);
         }
+
+
+
     }
 }

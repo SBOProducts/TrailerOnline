@@ -44,6 +44,7 @@ namespace TrailerOnline.Areas.Service.Controllers
             }
         }
 
+
         [Authorize(Roles = RoleBLL.Tenant)]
         public ActionResult WebsiteCreated(int Id)
         {
@@ -158,8 +159,6 @@ namespace TrailerOnline.Areas.Service.Controllers
                 {
                     WebSecurity.CreateUserAndAccount(model.UserName, model.Password, requireConfirmationToken: true);
                     Roles.AddUserToRole(model.UserName, RoleBLL.Tenant);
-                    //WebSecurity.Login(model.UserName, model.Password);
-                    
 
                     return RedirectToAction("VerifyAccount", "Account");
                 }

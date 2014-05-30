@@ -16,19 +16,6 @@ namespace TrailerOnline.Areas.Service.Controllers
             return View();
         }
 
-        public ActionResult TestEmail()
-        {
-            try
-            {
-                EmailBLL.Test();
-                ViewBag.Message = "The email was sent";
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Message = ex.Message;
-            }
-            return View();
-        }
 
         public ActionResult NotFound(string Id)
         {
