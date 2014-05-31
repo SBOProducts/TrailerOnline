@@ -9,6 +9,11 @@ namespace TrailerOnline.Areas.Service.Controllers
 {
     public class EmailContentController : Controller
     {
+        public EmailContentController(ControllerContext Context)
+        {
+            this.ControllerContext = Context;
+        }
+
         /// <summary>
         /// Renders a view to string
         /// </summary>
@@ -17,14 +22,12 @@ namespace TrailerOnline.Areas.Service.Controllers
         /// <returns></returns>
         public string RenderPartialViewToString(string viewName, object model)
         {
-            if (string.IsNullOrEmpty(viewName))
-                viewName = ControllerContext.RouteData.GetRequiredString("action");
-
+            string view = string.Format("~/Areas/Service/Views/EmailContent/{0}.cshtml", viewName);
             ViewData.Model = model;
 
             using (StringWriter sw = new StringWriter())
             {
-                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, viewName);
+                ViewEngineResult viewResult = ViewEngines.Engines.FindPartialView(ControllerContext, view);
                 ViewContext viewContext = new ViewContext(ControllerContext, viewResult.View, ViewData, TempData, sw);
                 viewResult.View.Render(viewContext, sw);
 
