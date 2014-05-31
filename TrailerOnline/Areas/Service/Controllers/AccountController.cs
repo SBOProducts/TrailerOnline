@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -153,13 +154,18 @@ namespace TrailerOnline.Areas.Service.Controllers
 
             if (ModelState.IsValid)
             {
-
-                // Attempt to register the user
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(model.UserName, model.Password, requireConfirmationToken: true);
+                    // register unconfirmed account
+                    string ConfirmationToken = WebSecurity.CreateUserAndAccount(model.UserName, model.Password, requireConfirmationToken: true);
                     Roles.AddUserToRole(model.UserName, RoleBLL.Tenant);
 
+                    // send welcome / confirmation email
+                    EmailContentController formatter = new EmailContentController();
+                    string ConfirmationEmailHtml = formatter.RenderPartialViewToString("AccountConfirmation", ConfirmationToken);
+                    EmailBLL.Send(model.UserName, "Welcome to Trailer Cloud", ConfirmationEmailHtml);
+
+                    // take to the verify account page
                     return RedirectToAction("VerifyAccount", "Account");
                 }
                 catch (MembershipCreateUserException e)
@@ -175,6 +181,8 @@ namespace TrailerOnline.Areas.Service.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
+
+
 
 
         /// <summary>

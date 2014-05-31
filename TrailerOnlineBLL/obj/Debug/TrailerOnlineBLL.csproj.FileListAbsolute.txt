@@ -24,3 +24,15 @@ C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Micros
 C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
 C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Extensions.xml
 C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Primitives.xml
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\obj\Debug\TrailerOnlineBLL.csproj.App.config
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\TrailerOnline.BLL.dll.config
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Microsoft.Threading.Tasks.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\SendGrid.SmtpApi.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\SendGridMail.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Extensions.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Primitives.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Microsoft.Threading.Tasks.xml
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Extensions.xml
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Primitives.xml
