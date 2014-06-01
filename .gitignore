@@ -213,3 +213,13 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.abide.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.abide.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.accordion.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.alert.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.dropdown.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.interchange.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.joyride.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.magellan.js
+packages/Foundation5.Core.5.2.2/content/Scripts/foundation/foundation.slider.js
