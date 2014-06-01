@@ -176,3 +176,6 @@ C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\bin\zh-Hant\System.
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.csprojResolveAssemblyReference.cache
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.dll
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.pdb
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\bin\RazorEngine.dll
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\bin\RazorEngine.pdb
+C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\bin\RazorEngine.xml

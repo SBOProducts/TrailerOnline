@@ -161,9 +161,7 @@ namespace TrailerOnline.Areas.Service.Controllers
                     Roles.AddUserToRole(model.UserName, RoleBLL.Tenant);
 
                     // send welcome / confirmation email
-                    EmailContentController formatter = new EmailContentController(this.ControllerContext);
-                    string ConfirmationEmailHtml = formatter.RenderPartialViewToString("AccountConfirmation", ConfirmationToken);
-                    EmailBLL.Send(model.UserName, "Welcome to Trailer Cloud", ConfirmationEmailHtml);
+                    EmailBLL.AccountMessages.ConfirmAccount(model.UserName, ConfirmationToken);
 
                     // take to the verify account page
                     return RedirectToAction("VerifyAccount", "Account");

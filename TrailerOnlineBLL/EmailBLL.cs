@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
+using System.Linq;
 using SendGrid;
 using SendGrid.SmtpApi;
 using System.Net.Mime;
 using System.Configuration;
+using RazorEngine;
+using RazorEngine.Templating;
+using TrailerOnline.DAL.DAL.dbo;
+using TrailerOnline.DAL.DO.dbo;
 
 namespace TrailerOnline.BLL
 {
     public class EmailBLL
     {
+        #region Sending Email
+
         /// <summary>
         /// Sends an email
         /// </summary>
@@ -69,6 +76,27 @@ namespace TrailerOnline.BLL
             Send(ToAddress, "", Subject, BodyHtml);
         }
 
+        #endregion
 
+        #region Account Messages
+        
+        public class AccountMessages
+        {
+            /// <summary>
+            /// Welcomes a new user and instructs them to confirm their account by clicking a link
+            /// </summary>
+            /// <param name="EmailAddress"></param>
+            /// <param name="ConfirmationToken"></param>
+            public static void ConfirmAccount(string EmailAddress, string ConfirmationToken)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("ConfirmYourAccount").FirstOrDefault();
+                string html = Razor.Parse(template.Content, new { ConfirmationToken = ConfirmationToken });
+                Send(EmailAddress, "Welcome to Trailer Cloud", html);
+            }
+
+        }
+
+
+        #endregion
     }
 }
