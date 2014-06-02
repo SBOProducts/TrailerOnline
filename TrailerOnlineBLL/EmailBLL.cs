@@ -6,8 +6,6 @@ using SendGrid;
 using SendGrid.SmtpApi;
 using System.Net.Mime;
 using System.Configuration;
-using RazorEngine;
-using RazorEngine.Templating;
 using TrailerOnline.DAL.DAL.dbo;
 using TrailerOnline.DAL.DO.dbo;
 
@@ -90,7 +88,7 @@ namespace TrailerOnline.BLL
             public static void ConfirmAccount(string EmailAddress, string ConfirmationToken)
             {
                 TemplateDO template = Template.GetByTemplate_Name("ConfirmYourAccount").FirstOrDefault();
-                string html = Razor.Parse(template.Content, new { ConfirmationToken = ConfirmationToken });
+                string html = template.Content.Replace("#ConfirmationToken#", ConfirmationToken);
                 Send(EmailAddress, "Welcome to Trailer Cloud", html);
             }
 

@@ -36,8 +36,3 @@ C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Micros
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Extensions.xml
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Net.Http.Primitives.xml
-C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\RazorEngine.dll
-C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Web.Razor.dll
-C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\RazorEngine.pdb
-C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\RazorEngine.xml
-C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnlineBLL\bin\Debug\System.Web.Razor.xml
