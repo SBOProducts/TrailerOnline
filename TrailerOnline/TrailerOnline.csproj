@@ -324,6 +324,7 @@
     <Content Include="Areas\Service\Views\Account\CreateWebsite.cshtml" />
     <Content Include="Areas\Service\Views\Account\WebsiteCreated.cshtml" />
     <Content Include="Areas\Service\Views\Help\Index.cshtml" />
+    <Content Include="Areas\Service\Views\Account\ResendVerificationEmail.cshtml" />
     <None Include="Properties\PublishProfiles\trailercloud.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\box-closed.png" />

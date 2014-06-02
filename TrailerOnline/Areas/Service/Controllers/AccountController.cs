@@ -183,6 +183,66 @@ namespace TrailerOnline.Areas.Service.Controllers
         }
 
 
+        /// <summary>
+        /// Sends a new verification email
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ResendVerificationEmail()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ResendVerificationEmail(ResendVerificationEmailModel model)
+        {
+            // form is valid?
+            if (!ModelState.IsValid)
+                return View(model);
+            
+            try{
+
+                // account exists?
+                if (!WebSecurity.UserExists(model.EmailAddress))
+                {
+                    ModelState.AddModelError("", "An account with that email address could not be found. Please check the email address.");
+                    return View();
+                }
+
+                // is confirmed already?
+                if (WebSecurity.IsConfirmed(model.EmailAddress))
+                {
+                    ModelState.AddModelError("", "This account has already been confirmed");
+                    return View();
+                }
+                
+                int userId = WebSecurity.GetUserId(model.EmailAddress);
+
+                // ok, send a new email
+                using (UsersContext db = new UsersContext())
+                {
+                    // the only way to get the token is to query the db directly, WebSecurity didn't think of that for some reason...
+                    string sql = string.Format("select ConfirmationToken from webpages_Membership where UserId={0}", userId);
+                    string token = db.Database.SqlQuery<string>(sql).FirstOrDefault();
+                    EmailBLL.AccountMessages.ConfirmAccount(model.EmailAddress, token);
+                    return RedirectToAction("VerifyAccount");
+                }
+                
+
+            
+            } catch(Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View();
+            }
+
+            
+            
+
+        }
+
+
 
 
         /// <summary>

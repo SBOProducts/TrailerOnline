@@ -89,6 +89,14 @@ namespace TrailerOnline.Models
         */
     }
 
+    public class ResendVerificationEmailModel
+    {
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name="Email Address")]
+        public string EmailAddress { get; set; }
+    }
+
     public class CreateWebsiteModel
     {
         /// <summary>

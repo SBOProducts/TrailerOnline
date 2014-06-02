@@ -15,12 +15,17 @@
             </p>
 
             <p>
-                If you do not receive an email within 10 minutes you may request a new verification 
-                email to be sent using the button below. Doing so will void the previous verification email. 
+                Our email service sends email immediately, but your email service may take longer to retrieve it. Please allow
+                adequate time for the email to arrive in your inbox (10 or 15 minutes is average, though some may take longer).
+            </p>
+            
+            <p>
+                If you do not receive an email or believe it has been lost you may request a new verification 
+                email using the link below. 
             </p>
 
             <p>
-                @Html.ActionLink("Resend Verification Email", "ResendVerificationEmail", "Account", null, new { @class = "button radius" })
+                @Html.ActionLink("Request new verification email", "ResendVerificationEmail", "Account")
             </p>
 
         </section>
