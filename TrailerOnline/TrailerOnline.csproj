@@ -199,7 +199,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\EmailTemplates.xml" />
     <Content Include="Areas\Service\Content\Site.css" />
     <Content Include="Areas\Service\Content\social-icons\addthis.png" />
     <Content Include="Areas\Service\Content\social-icons\aim.png" />
@@ -405,6 +404,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Areas\Service\Models\" />
   </ItemGroup>
   <ItemGroup>
