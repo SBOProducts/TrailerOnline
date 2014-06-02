@@ -160,6 +160,8 @@ namespace TrailerOnline.Areas.Service.Controllers
                     string ConfirmationToken = WebSecurity.CreateUserAndAccount(model.UserName, model.Password, requireConfirmationToken: true);
                     Roles.AddUserToRole(model.UserName, RoleBLL.Tenant);
 
+                    //string ConfirmationToken = "test";
+
                     // send welcome / confirmation email
                     EmailBLL.AccountMessages.ConfirmAccount(model.UserName, ConfirmationToken);
 
