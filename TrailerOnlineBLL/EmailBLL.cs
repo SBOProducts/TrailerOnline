@@ -81,6 +81,19 @@ namespace TrailerOnline.BLL
         public class AccountMessages
         {
             /// <summary>
+            /// Notifies a new user that their account has been confirmed
+            /// </summary>
+            /// <param name="EmailAddress"></param>
+            /// <param name="ConfirmationToken"></param>
+            public static void AccountConfirmed(string EmailAddress)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("YourAccountHasBeenConfirmed").FirstOrDefault();
+                string html = template.Content;
+                Send(EmailAddress, template.Subject, html);
+            }
+
+
+            /// <summary>
             /// Welcomes a new user and instructs them to confirm their account by clicking a link
             /// </summary>
             /// <param name="EmailAddress"></param>
@@ -89,7 +102,19 @@ namespace TrailerOnline.BLL
             {
                 TemplateDO template = Template.GetByTemplate_Name("ConfirmYourAccount").FirstOrDefault();
                 string html = template.Content.Replace("#ConfirmationToken#", ConfirmationToken);
-                Send(EmailAddress, "Welcome to Trailer Cloud", html);
+                Send(EmailAddress, template.Subject, html);
+            }
+
+
+            /// <summary>
+            /// Notifies a system admin that a new account has been confirmed
+            /// </summary>
+            /// <param name="NewAccountEmailAddress"></param>
+            public static void NewAccountNotification(string NewAccountEmailAddress)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("NewAccountConfirmed").FirstOrDefault();
+                string html = template.Content.Replace("#ConfirmedEmailAddress#", NewAccountEmailAddress);
+                Send(ConfigurationManager.AppSettings["AccountManagerEmail"], template.Subject, html);
             }
 
         }

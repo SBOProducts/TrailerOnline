@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend - Small Business Online, LLC
-// CREATED DATE: 5/31/2014
+// CREATED DATE: 6/1/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -30,17 +30,20 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Type = new SqlParameter("Type", SqlDbType.VarChar);
             SqlParameter _Category = new SqlParameter("Category", SqlDbType.VarChar);
             SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
+            SqlParameter _Subject = new SqlParameter("Subject", SqlDbType.VarChar);
             SqlParameter _Content = new SqlParameter("Content", SqlDbType.VarChar);
             
             _Type.Value = DO.Type;
             _Category.Value = DO.Category;
             _Name.Value = DO.Name;
+            _Subject.Value = DO.Subject;
             _Content.Value = DO.Content;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _Type,
                 _Category,
                 _Name,
+                _Subject,
                 _Content
             };
 
@@ -58,12 +61,14 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Type = new SqlParameter("Type", SqlDbType.VarChar);
             SqlParameter _Category = new SqlParameter("Category", SqlDbType.VarChar);
             SqlParameter _Name = new SqlParameter("Name", SqlDbType.VarChar);
+            SqlParameter _Subject = new SqlParameter("Subject", SqlDbType.VarChar);
             SqlParameter _Content = new SqlParameter("Content", SqlDbType.VarChar);
             
             _TemplateId.Value = DO.TemplateId;
             _Type.Value = DO.Type;
             _Category.Value = DO.Category;
             _Name.Value = DO.Name;
+            _Subject.Value = DO.Subject;
             _Content.Value = DO.Content;
             
             SqlParameter[] _params = new SqlParameter[] {
@@ -71,6 +76,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 _Type,
                 _Category,
                 _Name,
+                _Subject,
                 _Content
             };
 
@@ -112,6 +118,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Type = sr.GetString(sr.GetOrdinal("Type"));
                 obj.Category = sr.GetString(sr.GetOrdinal("Category"));
                 obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Subject = sr.GetString(sr.GetOrdinal("Subject"));
                 obj.Content = sr.GetString(sr.GetOrdinal("Content"));
                 
 
@@ -149,6 +156,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Type = sr.GetString(sr.GetOrdinal("Type"));
                 obj.Category = sr.GetString(sr.GetOrdinal("Category"));
                 obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Subject = sr.GetString(sr.GetOrdinal("Subject"));
                 obj.Content = sr.GetString(sr.GetOrdinal("Content"));
                 
 
@@ -184,6 +192,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Type = sr.GetString(sr.GetOrdinal("Type"));
                 obj.Category = sr.GetString(sr.GetOrdinal("Category"));
                 obj.Name = sr.GetString(sr.GetOrdinal("Name"));
+                obj.Subject = sr.GetString(sr.GetOrdinal("Subject"));
                 obj.Content = sr.GetString(sr.GetOrdinal("Content"));
                 
 

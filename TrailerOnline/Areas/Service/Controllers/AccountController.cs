@@ -191,6 +191,7 @@ namespace TrailerOnline.Areas.Service.Controllers
         /// <returns></returns>
         public ActionResult VerifyAccount(string id)
         {
+
             // if the token wasn't specified then return the view
             if (string.IsNullOrEmpty(id))
                 return View();
@@ -202,6 +203,26 @@ namespace TrailerOnline.Areas.Service.Controllers
                 return View();
             }
 
+            // lookup the user by confirmation token and send emails to user and system admin
+            try
+            {
+                // lookup email
+                string userEmail = string.Empty;
+                using (UsersContext db = new UsersContext())
+                {
+                    int UserId = db.Database.SqlQuery<int>(string.Format("select UserId from webpages_Membership where ConfirmationToken = '{0}'", id)).FirstOrDefault();
+                    UserProfile profile = db.UserProfiles.Where(p => p.UserId == UserId).FirstOrDefault();
+                    userEmail = profile.UserName;
+                }
+
+                // send message if found
+                if (!string.IsNullOrEmpty(userEmail))
+                {
+                    EmailBLL.AccountMessages.AccountConfirmed(userEmail);
+                    EmailBLL.AccountMessages.NewAccountNotification(userEmail);
+                }
+            }
+            catch { }
             
             // if the account is confirmed then show verified
             return RedirectToAction("AccountVerified", "Account");

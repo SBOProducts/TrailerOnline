@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[Template]    Script Date: 5/31/2014 3:33:16 PM ******/
+/****** Object:  Table [dbo].[Template]    Script Date: 6/1/2014 10:28:55 PM ******/
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 CREATE TABLE [dbo].[Template](
@@ -6,6 +6,7 @@ CREATE TABLE [dbo].[Template](
 	[Type] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Category] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Name] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[Subject] [varchar](100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Content] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
  CONSTRAINT [PK_Template] PRIMARY KEY CLUSTERED 
 (
@@ -15,7 +16,7 @@ CREATE TABLE [dbo].[Template](
 
 SET ANSI_PADDING ON
 
-/****** Object:  Index [Template_Name]    Script Date: 5/31/2014 3:33:16 PM ******/
+/****** Object:  Index [Template_Name]    Script Date: 6/1/2014 10:28:55 PM ******/
 CREATE NONCLUSTERED INDEX [Template_Name] ON [dbo].[Template]
 (
 	[Name] ASC
