@@ -4,11 +4,9 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
 
-    @Html.LabelFor(m => m.UserName)
-    @Html.TextBoxFor(m => m.UserName)
+    @Html.TextBoxFor(m => m.UserName, new { placeholder = "Email Address" })
                         
-    @Html.LabelFor(m => m.Password)
-    @Html.PasswordFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password, new { placeholder = "Password" })
 
     <p>
         <input type="submit" value="Login" class="button radius" />

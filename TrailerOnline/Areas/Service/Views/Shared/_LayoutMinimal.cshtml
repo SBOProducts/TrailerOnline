@@ -18,6 +18,22 @@
 </head>
 <body>
 
+    <div class="row">
+        <div class="large-12 columns">
+            <div id="LoginStatus">
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                }
+                <a href="javascript:document.getElementById('logoutForm').submit()">[ Log off ]</a>
+            } else {
+                @Html.ActionLink("[ Log in ]", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })   
+            }
+            </div>
+        </div>
+    </div>
     <div id="Wrapper">
         @RenderBody()
     </div>

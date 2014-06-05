@@ -69,18 +69,29 @@ namespace TrailerOnline.Areas.Service.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+            // if user exists but not confirmed take to verify account page
+            if (WebSecurity.UserExists(model.UserName) && !WebSecurity.IsConfirmed(model.UserName))
+                return RedirectToAction("VerifyAccount");
+
+            // try to login
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                TenantBO tenant = TenantBLL.GetTenantByOwner(model.UserName);
-                if (tenant == null)
-                    return RedirectToAction("CreateWebsite", "Account");
-                else
-                    return Redirect(tenant.Host);
+                return RedirectToAction("CreateWebsite", "Members");
             }
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            WebSecurity.Logout();
+
+            return RedirectToAction("Index", "Home");
         }
 
         
