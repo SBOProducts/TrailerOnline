@@ -54,6 +54,23 @@ namespace TrailerOnline.Models
         public string ConfirmPassword { get; set; }
     }
 
+    public class ResetPasswordModel
+    {
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        [Compare("Password")]
+        public string Confirm { get; set; }
+
+        [Required]
+        public string ResetToken { get; set; }
+    }
+
     public class LoginModel
     {
         [Required]

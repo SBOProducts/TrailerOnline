@@ -327,6 +327,10 @@
     <Content Include="Areas\Service\Views\Help\Index.cshtml" />
     <Content Include="Areas\Service\Views\Account\ResendVerificationEmail.cshtml" />
     <Content Include="Areas\Service\Views\Members\CreateWebsite.cshtml" />
+    <Content Include="Areas\Service\Views\Account\RequestPasswordReset.cshtml" />
+    <Content Include="Areas\Service\Views\Account\PasswordResetSent.cshtml" />
+    <Content Include="Areas\Service\Views\Account\UpdatePassword.cshtml" />
+    <Content Include="Areas\Service\Views\Account\PasswordUpdated.cshtml" />
     <None Include="Properties\PublishProfiles\trailercloud.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\box-closed.png" />

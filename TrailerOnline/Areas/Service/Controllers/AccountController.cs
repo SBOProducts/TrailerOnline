@@ -115,6 +115,72 @@ namespace TrailerOnline.Areas.Service.Controllers
         #endregion
 
 
+        #region Password Reset
+
+        public ActionResult RequestPasswordReset()
+        {
+            return View();
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult RequestPasswordReset(ResendVerificationEmailModel model)
+        {
+            // valid input?
+            if (!ModelState.IsValid)
+                return View(model);
+
+            // account exists?
+            if (!WebSecurity.UserExists(model.EmailAddress))
+            {
+                ModelState.AddModelError("", "An account with that email address could not be found");
+                return View(model);
+            }
+
+            string token = WebSecurity.GeneratePasswordResetToken(model.EmailAddress);
+            EmailBLL.AccountMessages.PasswordResetRequest(model.EmailAddress, token);
+            return RedirectToAction("PasswordResetSent", "Account");
+        }
+
+
+        public ActionResult PasswordResetSent()
+        {
+            return View();
+        }
+
+        public ActionResult UpdatePassword(string id)
+        {
+            ResetPasswordModel model = new ResetPasswordModel() { ResetToken = id };
+            return View(model);
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult UpdatePassword(ResetPasswordModel model)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
+
+            bool successful = WebSecurity.ResetPassword(model.ResetToken, model.Password);
+            if (successful)
+                return RedirectToAction("PasswordUpdated", "Account");
+
+            ModelState.AddModelError("", "Password reset failed.");
+            return View(model);
+            
+
+
+            
+        }
+
+
+        public ActionResult PasswordUpdated()
+        {
+            return View();
+        }
+
+        #endregion
+
         #region Registration
 
         /// <summary>

@@ -117,6 +117,31 @@ namespace TrailerOnline.BLL
                 Send(ConfigurationManager.AppSettings["AccountManagerEmail"], template.Subject, html);
             }
 
+
+            /// <summary>
+            /// Sends a link for resetting a password
+            /// </summary>
+            /// <param name="EmailAddress"></param>
+            /// <param name="ResetToken"></param>
+            public static void PasswordResetRequest(string EmailAddress, string ResetToken)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("PasswordReset").FirstOrDefault();
+                string html = template.Content.Replace("#token#", ResetToken);
+                Send(EmailAddress, template.Subject, html);
+            }
+
+            /*
+            /// <summary>
+            /// Notifies a user that their password has been reset
+            /// </summary>
+            /// <param name="EmailAddress"></param>
+            public static void PasswordResetSucceeded(string EmailAddress)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("PasswordUpdated").FirstOrDefault();
+                Send(EmailAddress, template.Subject, template.Content);
+            }
+            */
+
         }
 
 
