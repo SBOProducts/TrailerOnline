@@ -114,35 +114,6 @@ namespace TrailerOnline.Models
         public string EmailAddress { get; set; }
     }
 
-    public class CreateWebsiteModel
-    {
-        /// <summary>
-        /// Becomes the first part of the subdomain (tenantname.trailercloud.com)
-        /// </summary>
-        [Required]
-        [Display(Name="Website Name")]
-        [RegularExpression("\\w+")]
-        public string TenantName { get; set; }
-
-        /// <summary>
-        /// The name of the business
-        /// </summary>
-        [Required]
-        [Display(Name="Business Name")]
-        public string BusinessName { get; set; }
-
-        /// <summary>
-        /// The layout used for the website
-        /// </summary>
-        public string Layout { get; set; }
-
-        /// <summary>
-        /// The graphical theme applied to the layout
-        /// </summary>
-        public string Theme { get; set; }
-
-
-    }
 
     public class ExternalLogin
     {

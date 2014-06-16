@@ -183,10 +183,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Service\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Service\Controllers\FeaturesController.cs" />
     <Compile Include="Areas\Service\Controllers\HelpController.cs" />
     <Compile Include="Areas\Service\Controllers\HomeController.cs" />
     <Compile Include="Areas\Service\Controllers\MembersController.cs" />
+    <Compile Include="Areas\Service\Models\WebsiteModels.cs" />
     <Compile Include="Areas\Service\ServiceAreaRegistration.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
@@ -308,9 +308,6 @@
     <Content Include="Areas\Service\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Service\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Service\Views\Shared\_TopMenu.cshtml" />
-    <Content Include="Areas\Service\Views\Features\Affordable.cshtml" />
-    <Content Include="Areas\Service\Views\Features\Simple.cshtml" />
-    <Content Include="Areas\Service\Views\Features\Strong.cshtml" />
     <Content Include="Areas\Service\Views\Shared\_Footer.cshtml" />
     <Content Include="Areas\Service\Content\social-icons\Thumbs.db" />
     <Content Include="Areas\Service\Views\Home\Copy of Index.cshtml" />
@@ -322,8 +319,7 @@
     <Content Include="Areas\Service\Views\Shared\_CreateWebsite.cshtml" />
     <Content Include="Areas\Service\Views\Shared\_Login.cshtml" />
     <Content Include="Areas\Service\Views\Account\Login.cshtml" />
-    <Content Include="Areas\Service\Views\Account\CreateWebsite.cshtml" />
-    <Content Include="Areas\Service\Views\Account\WebsiteCreated.cshtml" />
+    <Content Include="Areas\Service\Views\Members\WebsiteCreated.cshtml" />
     <Content Include="Areas\Service\Views\Help\Index.cshtml" />
     <Content Include="Areas\Service\Views\Account\ResendVerificationEmail.cshtml" />
     <Content Include="Areas\Service\Views\Members\CreateWebsite.cshtml" />
@@ -413,7 +409,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Service\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

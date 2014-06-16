@@ -19,39 +19,7 @@ namespace TrailerOnline.Areas.Service.Controllers
         {
             return View();
         }
-
-        [Authorize(Roles = RoleBLL.Tenant)]
-        public ActionResult CreateWebsite()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [Authorize(Roles = RoleBLL.Tenant)]
-        public ActionResult CreateWebsite(CreateWebsiteModel model)
-        {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            try
-            {
-                TenantBO tenant = TenantBLL.Create(model.TenantName, User.Identity.Name, model.BusinessName);
-                return RedirectToAction("WebsiteCreated", "Account", new { id = tenant.TenantId });
-            }
-            catch (Exception ex)
-            {
-                ModelState.AddModelError("", ex.Message);
-                return View();
-            }
-        }
-
-
-        [Authorize(Roles = RoleBLL.Tenant)]
-        public ActionResult WebsiteCreated(int Id)
-        {
-            TenantBO tenant = TenantBLL.GetTenantById(Id);
-            return View(tenant);
-        }
+        
 
         #region Login
 
@@ -76,7 +44,11 @@ namespace TrailerOnline.Areas.Service.Controllers
             // try to login
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                return RedirectToAction("CreateWebsite", "Members");
+                TenantBO tenant = TenantBLL.GetTenantByOwner(model.UserName);
+                if (tenant == null)
+                    return RedirectToAction("CreateWebsite", "Members");
+                else
+                    return Redirect(tenant.Host);
             }
 
             // If we got this far, something failed, redisplay form
@@ -180,6 +152,7 @@ namespace TrailerOnline.Areas.Service.Controllers
         }
 
         #endregion
+
 
         #region Registration
 

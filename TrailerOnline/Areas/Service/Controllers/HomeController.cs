@@ -13,8 +13,11 @@ namespace TrailerOnline.Areas.Service.Controllers
 
         public ActionResult Index()
         {
+            ViewBag.Location = Server.MachineName;
             return View();
         }
+
+        
 
 
         public ActionResult NotFound(string Id)
