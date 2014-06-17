@@ -24,28 +24,5 @@ namespace TrailerOnline.Areas.Service.Models
         [Display(Name = "Business Name")]
         public string BusinessName { get; set; }
 
-        [Required]
-        public string PrimaryPhone { get; set; }
-
-        public string AlternatePhone { get; set; }
-
-        public string FaxNumber { get; set; }
-
-        [Required]
-        [Display(Name="Address")]
-        public string Address1 { get; set; }
-
-        public string Address2 { get; set; }
-
-        public string City { get; set; }
-
-        public string State { get; set; }
-
-        public string ZipCode { get; set; }
-
-        public string OperatingHours { get; set; }
-
-        public string LogoImageUrl { get; set; }
-
     }
 }

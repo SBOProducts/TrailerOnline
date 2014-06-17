@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TrailerOnline.Areas.Service.Models;
 using TrailerOnline.BLL;
 using TrailerOnline.BLL.MultiTenancy;
 using TrailerOnline.Models;
@@ -31,7 +32,8 @@ namespace TrailerOnline.Areas.Service.Controllers
             try
             {
                 TenantBO tenant = TenantBLL.Create(model.TenantName, User.Identity.Name, model.BusinessName);
-                return RedirectToAction("WebsiteCreated", "Account", new { id = tenant.TenantId });
+                EmailBLL.AccountMessages.WebsiteCreated(User.Identity.Name, tenant.Host);
+                return RedirectToAction("WebsiteCreated", "Members", new { id = tenant.TenantId });
             }
             catch (Exception ex)
             {

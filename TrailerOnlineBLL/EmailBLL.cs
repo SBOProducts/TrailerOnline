@@ -130,17 +130,18 @@ namespace TrailerOnline.BLL
                 Send(EmailAddress, template.Subject, html);
             }
 
-            /*
+
             /// <summary>
-            /// Notifies a user that their password has been reset
+            /// Sends the new website url
             /// </summary>
             /// <param name="EmailAddress"></param>
-            public static void PasswordResetSucceeded(string EmailAddress)
+            /// <param name="WebsiteUrl"></param>
+            public static void WebsiteCreated(string EmailAddress, string WebsiteUrl)
             {
-                TemplateDO template = Template.GetByTemplate_Name("PasswordUpdated").FirstOrDefault();
-                Send(EmailAddress, template.Subject, template.Content);
+                TemplateDO template = Template.GetByTemplate_Name("WebsiteCreated").FirstOrDefault();
+                string html = template.Content.Replace("#WebsiteUrl#", WebsiteUrl);
+                Send(EmailAddress, template.Subject, html);
             }
-            */
 
         }
 
