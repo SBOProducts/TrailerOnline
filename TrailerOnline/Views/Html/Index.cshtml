@@ -1,7 +1,7 @@
 ﻿@model TrailerOnline.BLL.BusinessObjects.HtmlBO
 @if (User.IsInRole(RoleBLL.Tenant))
 {
-    <textarea>@Html.Raw(Model.Content)</textarea>
+    <div data-html-editor="@Model.HtmlId" contenteditable="true" id="html_editor_@Model.HtmlId">@Html.Raw(Model.Content)</div>
 } else {
     @Html.Raw(Model.Content)
 }

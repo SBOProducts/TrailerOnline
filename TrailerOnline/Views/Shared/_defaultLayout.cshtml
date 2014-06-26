@@ -16,6 +16,7 @@
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/foundation/app.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/site.css")" />
     <link rel="stylesheet" type="text/css" href="@Url.Content(tenant.Theme)" />
+    
     @RenderSection("Header", false)
     <script type="text/javascript" src="@Url.Content("~/Scripts/modernizr-2.6.2.js")"></script>
 </head>
@@ -53,7 +54,37 @@
     
     <script>
         $(document).foundation();
-        
     </script>
+    
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <!-- ck editor scripts -->
+        <script type="text/javascript" src="@Url.Content("~/ckeditor/ckeditor.js")" ></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                CKEDITOR.disableAutoInline = true;
+                $("div[data-html-editor]").each(function () {
+                    var id = $(this).attr("id");
+                    var htmlId = $(this).attr("data-html-editor");
+                    CKEDITOR.inline(document.getElementById(id), {
+                        on: {
+                            blur: function (event) {
+                                var data = { Html: event.editor.getData() };
+                                jQuery.ajax({
+                                    url: "@Url.Action("Save", "Html")/" + htmlId,
+                                    type: "POST",
+                                    contentType: 'application/json; charset=utf-8',
+                                    data: JSON.stringify(data)
+                                });
+                            }
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+
+    @RenderSection("Scripts", false)
 </body>
 </html>

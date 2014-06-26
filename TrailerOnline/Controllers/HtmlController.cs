@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TrailerOnline.BLL;
 using TrailerOnline.BLL.BusinessObjects;
 using TrailerOnline.BLL.MultiTenancy;
+using TrailerOnline.Filters;
 
 namespace TrailerOnline.Controllers
 {
@@ -21,6 +22,16 @@ namespace TrailerOnline.Controllers
             TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
             HtmlBO model = HtmlBLL.GetHtml(Id, tenant.TenantId);
             return PartialView(model);
+        }
+
+        [TenantAuthorization]
+        [HttpPost]
+        public ActionResult Save(int Id, string Html)
+        {
+            TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
+            HtmlBO data = new HtmlBO() { Content = Html, HtmlId = Id, TenantId = tenant.TenantId };
+            HtmlBLL.UpdateHtml(data);
+            return Json(data);
         }
 
     }
