@@ -9,14 +9,16 @@
 USE [TrailerOnline]
 
 -- Drop the procedure if it exists.
-If OBJECT_ID('[dbo].[Template_GetAll]') IS NOT NULL
+If OBJECT_ID('[dbo].[Html_Insert]') IS NOT NULL
     BEGIN
-    DROP PROCEDURE [dbo].[Template_GetAll]
+    DROP PROCEDURE [dbo].[Html_Insert]
     END
 GO
 
-CREATE PROCEDURE [dbo].[Template_GetAll]
-
+CREATE PROCEDURE [dbo].[Html_Insert]
+    @HtmlId Int,
+    @TenantId Int,
+    @Content VarChar(MAX)
 AS
 
 BEGIN
@@ -24,13 +26,18 @@ BEGIN
     -- interfering with SELECT statements.
     SET NOCOUNT ON;
 
-    SELECT
-        [TemplateId],
-        [Type],
-        [Category],
-        [Name],
-        [Subject],
+    INSERT INTO [dbo].[Html]
+	(
+        [HtmlId],
+        [TenantId],
         [Content]
-    FROM [dbo].[Template]
+    ) VALUES (
+        @HtmlId,
+        @TenantId,
+        @Content
+	)
+
+	-- return the new identity value
+	SELECT SCOPE_IDENTITY()
 
 END

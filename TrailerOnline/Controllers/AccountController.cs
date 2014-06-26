@@ -17,8 +17,6 @@ namespace TrailerOnline.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        //
-        // GET: /Account/Login
 
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -27,29 +25,33 @@ namespace TrailerOnline.Controllers
             return View();
         }
 
-        //
-        // POST: /Account/Login
 
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
         {
+
+            // if user exists but not confirmed take to verify account page
+            if (WebSecurity.UserExists(model.UserName) && !WebSecurity.IsConfirmed(model.UserName))
+                return RedirectToAction("VerifyAccount", "Account", new { area = "Service" });
+
+            // try to login
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
-                TenantBO user = TenantBLL.GetTenantByOwner(model.UserName);
-                return Redirect(user.Host);
-                //return RedirectToAction("Index", "Home", new { tenant = user.Name });
-                //return RedirectToLocal(returnUrl);
+                TenantBO tenant = TenantBLL.GetTenantByOwner(model.UserName);
+                if (tenant == null)
+                    return RedirectToAction("CreateWebsite", "Members", new { area = "Service" });
+                else
+                    return RedirectToLocal(returnUrl);
             }
 
             // If we got this far, something failed, redisplay form
             ModelState.AddModelError("", "The user name or password provided is incorrect.");
             return View(model);
+
         }
 
-        //
-        // POST: /Account/LogOff
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -60,6 +62,7 @@ namespace TrailerOnline.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /*
         //
         // GET: /Account/Register
 
@@ -346,17 +349,7 @@ namespace TrailerOnline.Controllers
         
 
         #region Helpers
-        private ActionResult RedirectToLocal(string returnUrl)
-        {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
-        }
+
 
         public enum ManageMessageId
         {
@@ -379,6 +372,19 @@ namespace TrailerOnline.Controllers
             public override void ExecuteResult(ControllerContext context)
             {
                 OAuthWebSecurity.RequestAuthentication(Provider, ReturnUrl);
+            }
+        }
+        */
+
+        private ActionResult RedirectToLocal(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
 
@@ -419,6 +425,5 @@ namespace TrailerOnline.Controllers
                     return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
             }
         }
-        #endregion
     }
 }

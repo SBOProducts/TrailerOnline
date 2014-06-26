@@ -12,16 +12,13 @@ using System.ComponentModel.DataAnnotations;
 namespace TrailerOnline.DAL.DO.dbo
 {
     /// <summary>
-    /// Encapsulates a row of data in the Template table
+    /// Encapsulates a row of data in the Html table
     /// </summary>
-    public partial class TemplateDO
+    public partial class HtmlDO
     {
 
-        public virtual Int32 TemplateId {get; set;}
-        public virtual String Type {get; set;}
-        public virtual String Category {get; set;}
-        public virtual String Name {get; set;}
-        public virtual String Subject {get; set;}
+        public virtual Int32 HtmlId {get; set;}
+        public virtual Int32 TenantId {get; set;}
         public virtual String Content {get; set;}
 
     }

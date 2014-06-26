@@ -1,0 +1,7 @@
+﻿@model TrailerOnline.BLL.BusinessObjects.HtmlBO
+@if (User.IsInRole(RoleBLL.Tenant))
+{
+    <textarea>@Html.Raw(Model.Content)</textarea>
+} else {
+    @Html.Raw(Model.Content)
+}

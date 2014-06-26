@@ -9,14 +9,16 @@
 USE [TrailerOnline]
 
 -- Drop the procedure if it exists.
-If OBJECT_ID('[dbo].[Template_GetAll]') IS NOT NULL
+If OBJECT_ID('[dbo].[Html_Update]') IS NOT NULL
     BEGIN
-    DROP PROCEDURE [dbo].[Template_GetAll]
+    DROP PROCEDURE [dbo].[Html_Update]
     END
 GO
 
-CREATE PROCEDURE [dbo].[Template_GetAll]
-
+CREATE PROCEDURE [dbo].[Html_Update]
+    @HtmlId Int,
+    @TenantId Int,
+    @Content VarChar(MAX)
 AS
 
 BEGIN
@@ -24,13 +26,14 @@ BEGIN
     -- interfering with SELECT statements.
     SET NOCOUNT ON;
 
-    SELECT
-        [TemplateId],
-        [Type],
-        [Category],
-        [Name],
-        [Subject],
-        [Content]
-    FROM [dbo].[Template]
+    UPDATE [dbo].[Html]
+    SET
+        [HtmlId] = @HtmlId,
+        [TenantId] = @TenantId,
+        [Content] = @Content
+    WHERE
+        [HtmlId] = @HtmlId AND
+        [TenantId] = @TenantId
 
+    SELECT @@ROWCOUNT AS UPDATED; 
 END

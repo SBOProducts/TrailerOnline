@@ -48,7 +48,6 @@ namespace TrailerOnline.BLL.MultiTenancy
             this.Created = data.Created;
             this.Owner = data.Owner;
             this.Promotional = data.Promotional;
-            this.ReferredByTenantId = data.ReferrerTenantId;
         }
 
 
@@ -68,7 +67,6 @@ namespace TrailerOnline.BLL.MultiTenancy
                 Created = this.Created,
                 Owner = this.Owner,
                 Promotional = this.Promotional,
-                ReferrerTenantId = this.ReferredByTenantId
             };
         }
 

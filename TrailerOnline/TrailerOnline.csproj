@@ -188,7 +188,9 @@
     <Compile Include="Areas\Service\Controllers\MembersController.cs" />
     <Compile Include="Areas\Service\Models\WebsiteModels.cs" />
     <Compile Include="Areas\Service\ServiceAreaRegistration.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HtmlController.cs" />
     <Compile Include="Controllers\MyAccountController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -302,7 +304,9 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="App_Readme\Foundation_readme.md" />
-    <Content Include="Areas\Service\Views\Web.config" />
+    <Content Include="Areas\Service\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Areas\Service\Views\Home\Index.cshtml" />
     <Content Include="Areas\Service\Views\Home\NotFound.cshtml" />
     <Content Include="Areas\Service\Views\Shared\_Layout.cshtml" />
@@ -394,10 +398,9 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\System\Common.cshtml">
+    <Content Include="Areas\Service\Views\Home\xIndex.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\System\Register.cshtml" />
     <Content Include="Views\Account\VerifyAccount.cshtml" />
     <Content Include="Views\Account\VerifyAccountToken.cshtml" />
     <Content Include="Views\MyAccount\Index.cshtml" />
@@ -406,6 +409,7 @@
     <Content Include="Views\MyAccount\Profile.cshtml" />
     <Content Include="Views\Shared\_TopMenu.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Html\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

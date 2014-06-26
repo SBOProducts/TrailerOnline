@@ -42,13 +42,14 @@ namespace TrailerOnline.Areas.Service.Controllers
                 return RedirectToAction("VerifyAccount");
 
             // try to login
+            
             if (ModelState.IsValid && WebSecurity.Login(model.UserName, model.Password, persistCookie: model.RememberMe))
             {
                 TenantBO tenant = TenantBLL.GetTenantByOwner(model.UserName);
                 if (tenant == null)
                     return RedirectToAction("CreateWebsite", "Members");
                 else
-                    return Redirect(tenant.Host);
+                    return Redirect("http://" + tenant.Host);
             }
 
             // If we got this far, something failed, redisplay form

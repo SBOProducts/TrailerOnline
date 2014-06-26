@@ -9,13 +9,13 @@
 USE [TrailerOnline]
 
 -- Drop the procedure if it exists.
-If OBJECT_ID('[dbo].[Template_GetAll]') IS NOT NULL
+If OBJECT_ID('[dbo].[Html_GetAll]') IS NOT NULL
     BEGIN
-    DROP PROCEDURE [dbo].[Template_GetAll]
+    DROP PROCEDURE [dbo].[Html_GetAll]
     END
 GO
 
-CREATE PROCEDURE [dbo].[Template_GetAll]
+CREATE PROCEDURE [dbo].[Html_GetAll]
 
 AS
 
@@ -25,12 +25,9 @@ BEGIN
     SET NOCOUNT ON;
 
     SELECT
-        [TemplateId],
-        [Type],
-        [Category],
-        [Name],
-        [Subject],
+        [HtmlId],
+        [TenantId],
         [Content]
-    FROM [dbo].[Template]
+    FROM [dbo].[Html]
 
 END

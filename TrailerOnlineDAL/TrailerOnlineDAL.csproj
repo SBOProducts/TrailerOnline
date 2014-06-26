@@ -42,9 +42,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSharp\DAL\DataCommon.cs" />
+    <Compile Include="CSharp\DAL\Html.cs" />
     <Compile Include="CSharp\DAL\SafeReader.cs" />
     <Compile Include="CSharp\DAL\Template.cs" />
     <Compile Include="CSharp\DAL\Tenant.cs" />
+    <Compile Include="CSharp\DO\Html.cs" />
     <Compile Include="CSharp\DO\Template.cs" />
     <Compile Include="CSharp\DO\Tenant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
