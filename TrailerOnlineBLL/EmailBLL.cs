@@ -145,7 +145,58 @@ namespace TrailerOnline.BLL
 
         }
 
-
         #endregion
+
+        public class DefaultHtmlContent
+        {
+            /// <summary>
+            /// Default content for the main section of the home page
+            /// </summary>
+            /// <param name="BusinessName"></param>
+            /// <returns></returns>
+            public static string HomePage(string BusinessName)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("HomePage").FirstOrDefault();
+                string html = template.Content.Replace("#BusinessName#", BusinessName);
+                return html;
+            }
+
+            /// <summary>
+            /// Default content for the first footer column
+            /// </summary>
+            /// <param name="BusinessName"></param>
+            /// <returns></returns>
+            public static string FooterColumn1(string BusinessName)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("FooterCol1").FirstOrDefault();
+                string html = template.Content.Replace("#BusinessName#", BusinessName);
+                return html;
+            }
+
+            /// <summary>
+            /// Default content for the second footer column
+            /// </summary>
+            /// <param name="BusinessName"></param>
+            /// <returns></returns>
+            public static string FooterColumn2(string BusinessName)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("FooterCol2").FirstOrDefault();
+                string html = template.Content.Replace("#BusinessName#", BusinessName);
+                return html;
+            }
+
+            /// <summary>
+            /// Default content for the third footer column
+            /// </summary>
+            /// <param name="BusinessName"></param>
+            /// <returns></returns>
+            public static string FooterColumn3(string BusinessName)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("FooterCol3").FirstOrDefault();
+                string html = template.Content.Replace("#BusinessName#", BusinessName);
+                return html;
+            }
+        }
+
     }
 }

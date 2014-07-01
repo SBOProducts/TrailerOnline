@@ -11,6 +11,22 @@ namespace TrailerOnline.BLL
 {
     public static class HtmlBLL
     {
+
+        /// <summary>
+        /// Creates a new Html record
+        /// </summary>
+        /// <param name="HtmlId"></param>
+        /// <param name="TenantId"></param>
+        /// <param name="Content"></param>
+        /// <returns></returns>
+        public static HtmlBO CreateHtml(int HtmlId, int TenantId, string Content)
+        {
+            HtmlDO data = new HtmlDO() { Content = Content, HtmlId = HtmlId, TenantId = TenantId };
+            Html.Create(data);
+            return new HtmlBO(data);
+        }
+        
+        
         /// <summary>
         /// Gets a html business object
         /// </summary>
@@ -40,5 +56,8 @@ namespace TrailerOnline.BLL
         {
             Html.Update(data.GetDataObject());
         }
+
+
+
     }
 }

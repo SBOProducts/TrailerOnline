@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using TrailerOnline.BLL.BusinessObjects;
 using TrailerOnline.DAL.DAL.dbo;
 using TrailerOnline.DAL.DO.dbo;
 
@@ -261,9 +262,15 @@ namespace TrailerOnline.BLL.MultiTenancy
             if(TenantExistsByHost(tenant.Host))
                 throw new DuplicateTenantException(tenant.Host);
 
-            // create the new record
+            // create the new tenant record
             TenantDO obj = tenant.GetDataObject();
             obj.TenantId = Tenant.Create(obj);
+
+            // create default content entries
+            HtmlBLL.CreateHtml(1, obj.TenantId, EmailBLL.DefaultHtmlContent.HomePage(tenant.Title));
+            HtmlBLL.CreateHtml(2, obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn1(tenant.Title));
+            HtmlBLL.CreateHtml(3, obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn2(tenant.Title));
+            HtmlBLL.CreateHtml(4, obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn3(tenant.Title));
             
             // get the business object and add to cache
             TenantBO bo = GetTenantBO(obj);
