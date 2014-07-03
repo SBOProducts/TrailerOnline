@@ -1,5 +1,5 @@
-// CREATED BY: Nathan Townsend - Small Business Online, LLC
-// CREATED DATE: 6/25/2014
+// CREATED BY: Nathan Townsend
+// CREATED DATE: 7/3/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -27,17 +27,17 @@ namespace TrailerOnline.DAL.DAL.dbo
         /// </summary>
         public static void Create(HtmlDO DO)
         {
-            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.Int);
             SqlParameter _TenantId = new SqlParameter("TenantId", SqlDbType.Int);
+            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.UniqueIdentifier);
             SqlParameter _Content = new SqlParameter("Content", SqlDbType.VarChar);
             
-            _HtmlId.Value = DO.HtmlId;
             _TenantId.Value = DO.TenantId;
+            _HtmlId.Value = DO.HtmlId;
             _Content.Value = DO.Content;
             
             SqlParameter[] _params = new SqlParameter[] {
-                _HtmlId,
                 _TenantId,
+                _HtmlId,
                 _Content
             };
 
@@ -51,17 +51,17 @@ namespace TrailerOnline.DAL.DAL.dbo
         /// </summary>
         public static int Update(HtmlDO DO)
         {
-            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.Int);
             SqlParameter _TenantId = new SqlParameter("TenantId", SqlDbType.Int);
+            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.UniqueIdentifier);
             SqlParameter _Content = new SqlParameter("Content", SqlDbType.VarChar);
             
-            _HtmlId.Value = DO.HtmlId;
             _TenantId.Value = DO.TenantId;
+            _HtmlId.Value = DO.HtmlId;
             _Content.Value = DO.Content;
             
             SqlParameter[] _params = new SqlParameter[] {
-                _HtmlId,
                 _TenantId,
+                _HtmlId,
                 _Content
             };
 
@@ -74,15 +74,15 @@ namespace TrailerOnline.DAL.DAL.dbo
         /// </summary>
         public static int Delete(HtmlDO DO)
         {
-            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.Int);
             SqlParameter _TenantId = new SqlParameter("TenantId", SqlDbType.Int);
+            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.UniqueIdentifier);
             
-            _HtmlId.Value = DO.HtmlId;
             _TenantId.Value = DO.TenantId;
+            _HtmlId.Value = DO.HtmlId;
             
             SqlParameter[] _params = new SqlParameter[] {
-                _HtmlId,
-                _TenantId
+                _TenantId,
+                _HtmlId
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Html_Delete]", _params, "dbo");
@@ -102,8 +102,8 @@ namespace TrailerOnline.DAL.DAL.dbo
 
                 HtmlDO obj = new HtmlDO();
                 
-                obj.HtmlId = sr.GetInt32(sr.GetOrdinal("HtmlId"));
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
+                obj.HtmlId = sr.GetGuid(sr.GetOrdinal("HtmlId"));
                 obj.Content = sr.GetString(sr.GetOrdinal("Content"));
                 
 
@@ -118,19 +118,19 @@ namespace TrailerOnline.DAL.DAL.dbo
         /// <summary>
         /// Selects Html records by PK
         /// </summary>
-        public static HtmlDO[] GetByPK(Int32 HtmlId,
- Int32 TenantId)
+        public static HtmlDO[] GetByPK(Int32 TenantId,
+ Guid HtmlId)
         {
 
-            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.Int);
             SqlParameter _TenantId = new SqlParameter("TenantId", SqlDbType.Int);
+            SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.UniqueIdentifier);
 			
-            _HtmlId.Value = HtmlId;
             _TenantId.Value = TenantId;
+            _HtmlId.Value = HtmlId;
 			
             SqlParameter[] _params = new SqlParameter[] {
-                _HtmlId,
-                _TenantId
+                _TenantId,
+                _HtmlId
             };
 
             SafeReader sr = DataCommon.ExecuteSafeReader("[dbo].[Html_GetByPK]", _params, "dbo");
@@ -141,8 +141,8 @@ namespace TrailerOnline.DAL.DAL.dbo
             {
                 HtmlDO obj = new HtmlDO();
 				
-                obj.HtmlId = sr.GetInt32(sr.GetOrdinal("HtmlId"));
                 obj.TenantId = sr.GetInt32(sr.GetOrdinal("TenantId"));
+                obj.HtmlId = sr.GetGuid(sr.GetOrdinal("HtmlId"));
                 obj.Content = sr.GetString(sr.GetOrdinal("Content"));
                 
 

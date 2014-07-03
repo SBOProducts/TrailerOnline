@@ -19,7 +19,7 @@ namespace TrailerOnline.BLL
         /// <param name="TenantId"></param>
         /// <param name="Content"></param>
         /// <returns></returns>
-        public static HtmlBO CreateHtml(int HtmlId, int TenantId, string Content)
+        public static HtmlBO CreateHtml(Guid HtmlId, int TenantId, string Content)
         {
             HtmlDO data = new HtmlDO() { Content = Content, HtmlId = HtmlId, TenantId = TenantId };
             Html.Create(data);
@@ -33,9 +33,9 @@ namespace TrailerOnline.BLL
         /// <param name="HtmlId"></param>
         /// <param name="TenantId"></param>
         /// <returns></returns>
-        public static HtmlBO GetHtml(int HtmlId, int TenantId)
+        public static HtmlBO GetHtml(Guid HtmlId, int TenantId)
         {
-            HtmlDO dataObject = Html.GetByPK(HtmlId, TenantId).FirstOrDefault();
+            HtmlDO dataObject = Html.GetByPK(TenantId, HtmlId).FirstOrDefault();
 
             // ensure the data object exists
             if (dataObject == null)

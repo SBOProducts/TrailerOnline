@@ -1,5 +1,5 @@
--- CREATED BY: Nathan Townsend - Small Business Online, LLC
--- CREATED DATE: 6/25/2014
+-- CREATED BY: Nathan Townsend
+-- CREATED DATE: 7/3/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -16,8 +16,8 @@ If OBJECT_ID('[dbo].[Html_Delete]') IS NOT NULL
 GO
 
 CREATE PROCEDURE [dbo].[Html_Delete]
-    @HtmlId Int,
-        @TenantId Int
+    @TenantId Int,
+        @HtmlId UniqueIdentifier
 AS
 
 BEGIN
@@ -28,8 +28,8 @@ BEGIN
     DELETE 
         [dbo].[Html]
     WHERE
-        [HtmlId] = @HtmlId AND
-        [TenantId] = @TenantId
+        [TenantId] = @TenantId AND
+        [HtmlId] = @HtmlId
 
     SELECT @@ROWCOUNT AS DELETED; 
 END

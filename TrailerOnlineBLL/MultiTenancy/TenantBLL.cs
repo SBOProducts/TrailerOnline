@@ -267,10 +267,12 @@ namespace TrailerOnline.BLL.MultiTenancy
             obj.TenantId = Tenant.Create(obj);
 
             // create default content entries
-            HtmlBLL.CreateHtml(1, obj.TenantId, EmailBLL.DefaultHtmlContent.HomePage(tenant.Title));
-            HtmlBLL.CreateHtml(2, obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn1(tenant.Title));
-            HtmlBLL.CreateHtml(3, obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn2(tenant.Title));
-            HtmlBLL.CreateHtml(4, obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn3(tenant.Title));
+            HtmlBLL.CreateHtml(new Guid("53256b66-f30c-46c3-8cd3-0121c76d316a"), obj.TenantId, EmailBLL.DefaultHtmlContent.HomePage(tenant.Title));
+            HtmlBLL.CreateHtml(new Guid("d60781ff-c813-458e-b89e-833819ed46d2"), obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn1(tenant.Title));
+            HtmlBLL.CreateHtml(new Guid("f0e1d572-0c9d-411a-830f-152a3cfb32ba"), obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn2(tenant.Title));
+            HtmlBLL.CreateHtml(new Guid("f7dfe80f-3232-4e78-9c60-3ee80771ee83"), obj.TenantId, EmailBLL.DefaultHtmlContent.FooterColumn3(tenant.Title));
+            HtmlBLL.CreateHtml(new Guid("207cadff-65a6-4fa2-a950-16453ac281e9"), obj.TenantId, EmailBLL.DefaultHtmlContent.AboutPage(tenant.Title));
+            HtmlBLL.CreateHtml(new Guid("1f1e38b9-11eb-4005-82ec-a5f162c5f4d4"), obj.TenantId, EmailBLL.DefaultHtmlContent.ContactPage(tenant.Title));
             
             // get the business object and add to cache
             TenantBO bo = GetTenantBO(obj);

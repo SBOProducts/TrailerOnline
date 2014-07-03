@@ -1,5 +1,5 @@
--- CREATED BY: Nathan Townsend - Small Business Online, LLC
--- CREATED DATE: 6/25/2014
+-- CREATED BY: Nathan Townsend
+-- CREATED DATE: 7/3/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -16,8 +16,8 @@ If OBJECT_ID('[dbo].[Html_Update]') IS NOT NULL
 GO
 
 CREATE PROCEDURE [dbo].[Html_Update]
-    @HtmlId Int,
     @TenantId Int,
+    @HtmlId UniqueIdentifier,
     @Content VarChar(MAX)
 AS
 
@@ -28,12 +28,12 @@ BEGIN
 
     UPDATE [dbo].[Html]
     SET
-        [HtmlId] = @HtmlId,
         [TenantId] = @TenantId,
+        [HtmlId] = @HtmlId,
         [Content] = @Content
     WHERE
-        [HtmlId] = @HtmlId AND
-        [TenantId] = @TenantId
+        [TenantId] = @TenantId AND
+        [HtmlId] = @HtmlId
 
     SELECT @@ROWCOUNT AS UPDATED; 
 END

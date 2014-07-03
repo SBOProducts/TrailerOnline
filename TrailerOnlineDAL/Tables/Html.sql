@@ -1,14 +1,14 @@
-/****** Object:  Table [dbo].[Html]    Script Date: 6/25/2014 11:25:25 PM ******/
+/****** Object:  Table [dbo].[Html]    Script Date: 7/3/2014 9:54:44 AM ******/
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 CREATE TABLE [dbo].[Html](
-	[HtmlId] [int] NOT NULL,
 	[TenantId] [int] NOT NULL,
+	[HtmlId] [uniqueidentifier] NOT NULL,
 	[Content] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
- CONSTRAINT [PK_Html] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_Html_1] PRIMARY KEY CLUSTERED 
 (
-	[HtmlId] ASC,
-	[TenantId] ASC
+	[TenantId] ASC,
+	[HtmlId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 

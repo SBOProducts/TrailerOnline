@@ -76,7 +76,6 @@ namespace TrailerOnline.BLL
 
         #endregion
 
-        #region Account Messages
         
         public class AccountMessages
         {
@@ -145,8 +144,7 @@ namespace TrailerOnline.BLL
 
         }
 
-        #endregion
-
+        
         public class DefaultHtmlContent
         {
             /// <summary>
@@ -161,6 +159,33 @@ namespace TrailerOnline.BLL
                 return html;
             }
 
+
+            /// <summary>
+            /// Default content for the main section of the about page
+            /// </summary>
+            /// <param name="BusinessName"></param>
+            /// <returns></returns>
+            public static string AboutPage(string BusinessName)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("AboutPage").FirstOrDefault();
+                string html = template.Content.Replace("#BusinessName#", BusinessName);
+                return html;
+            }
+
+
+            /// <summary>
+            /// Default content for the main section of the contact page
+            /// </summary>
+            /// <param name="BusinessName"></param>
+            /// <returns></returns>
+            public static string ContactPage(string BusinessName)
+            {
+                TemplateDO template = Template.GetByTemplate_Name("ContactPage").FirstOrDefault();
+                string html = template.Content.Replace("#BusinessName#", BusinessName);
+                return html;
+            }
+
+
             /// <summary>
             /// Default content for the first footer column
             /// </summary>
@@ -173,6 +198,7 @@ namespace TrailerOnline.BLL
                 return html;
             }
 
+
             /// <summary>
             /// Default content for the second footer column
             /// </summary>
@@ -184,6 +210,7 @@ namespace TrailerOnline.BLL
                 string html = template.Content.Replace("#BusinessName#", BusinessName);
                 return html;
             }
+
 
             /// <summary>
             /// Default content for the third footer column

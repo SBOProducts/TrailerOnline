@@ -45,7 +45,7 @@ namespace TrailerOnline.BLL.BusinessObjects
         /// <summary>
         /// The id of the html content
         /// </summary>
-        public virtual Int32 HtmlId { get; set; }
+        public virtual Guid HtmlId { get; set; }
 
         /// <summary>
         /// The tenant that owns the content

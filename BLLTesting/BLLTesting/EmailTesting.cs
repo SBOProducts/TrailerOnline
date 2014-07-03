@@ -25,6 +25,8 @@ namespace BLLTesting
             ResetYourPassword();
             WebsiteCreated();
             HomePage();
+            AboutPage();
+            ContactPage();
             FooterCol1();
             FooterCol2();
             FooterCol3();
@@ -70,7 +72,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("welcome to trailer cloud tempalte created");
         }
 
         private void CreateYourAccountHasBeenConfirmedTemplate()
@@ -96,7 +98,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Trailer Cloud Account Confirmed Tempalte created");
         }
 
         private void NewAccountConfirmed()
@@ -114,7 +116,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("New Account Confirmed Tempalte created");
         }
 
         private void ResetYourPassword()
@@ -146,7 +148,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Reset your Trailer Cloud password Tempalte created");
         }
 
         private void WebsiteCreated()
@@ -164,7 +166,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Your Trailer Cloud Website Is Ready Tempalte created");
         }
 
         #endregion
@@ -187,19 +189,92 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 
 <p>Your website pages work just like a word processor. When you&#39;re logged in and click a page you&#39;ll see the toolbar appear, like below. If you&#39;ve ever used Microsoft Word or Open Office this will seem natural. Go ahead, give it a try. You don&#39;t need to worry about saving either, your website does that automatically whenever you click off of the content and the toolbar disappears.</p>
 
-<p><img alt="edit pages just like using a word processor" src="http://trailercloud.com/images/editor.png" style="border-style:solid; border-width:2px; height:73px; width:473px" /></p>
+<p><img alt='edit pages just like using a word processor' src='http://trailercloud.com/images/editor.png' style='border-style:solid; border-width:2px; height:73px; width:473px' /></p>
 
 <p>Adding images is a breeze, simply drag them onto your web page from your desktop of folder. That&#39;s it.</p>
 
 <p>&nbsp;</p>
 
-<p>&nbsp;</p>
-
-"
+<p>&nbsp;</p>"
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Home page content template created");
         }
+
+        void AboutPage()
+        {
+            Template.Create(new TemplateDO()
+            {
+                Category = "Content",
+                Name = "AboutPage",
+                Type = "Html",
+                Subject = "Default Content",
+                Content = @"      
+<h1>About #BusinessName#</h1>
+
+<p>
+    What? You want me to write about my business? 
+</p>
+<p>
+    Your website is awesome, and your products look great. But customers won't pick up the phone or get in their car until they decide you're legit. And they're coming to this page to make that decision. 
+</p>
+</h3>Pointers</h3>
+<p>
+    The biggest thing is to not over complicate it. Nobody likes writing this stuff, but customers need it and will get a bad impression if you don't try. 
+    So take a deep breath, and give it a shot. You can change it any time you please. 
+</p>
+<h3>What most people are looking for</h3>
+<ul>
+    <li>A brief bio of your company including name, how many people you employ, how long you've been in business, and maybe how you got started</li>
+    <li>What services do you offer</li>
+    <li>What type of inventory do you cary - new, used, brands, etc.</li>
+    <li>Where you're located and how you can be reached (phone, fax, email, social media)</li>
+</ul>
+
+<h3>Some helpful links</h3>
+<p>
+    <a href='http://www.copyblogger.com/how-to-write-an-about-page/'>How to write an about page</a>
+</p>
+<p>
+    <a href='http://bostinno.streetwise.co/2011/05/26/5-must-haves-for-your-companys-about-page/'>5 Must Haves for Your Company's About Page</a>
+</p>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>"
+            });
+
+            Console.WriteLine("About page content template created");
+        }
+
+        void ContactPage()
+        {
+            Template.Create(new TemplateDO()
+            {
+                Category = "Content",
+                Name = "ContactPage",
+                Type = "Html",
+                Subject = "Default Content",
+                Content = @"      
+<h1>Contact #BusinessName#</h1>
+
+<p>
+    Your contact page needs to provide customers means of contacting you. 
+</p>
+
+<ul>
+    <li>Business Name</li>
+    <li>Address</li>
+    <li>Phone Numbers</li>
+    <li>Fax Numbers</li>
+</ul>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>"
+            });
+
+            Console.WriteLine("Contact page content template created");
+        }
+
 
         void FooterCol1()
         {
@@ -219,7 +294,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Footer Column 1 template created");
         }
 
         void FooterCol2()
@@ -240,7 +315,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Footer Column 2 template created");
         }
 
         void FooterCol3()
@@ -258,7 +333,7 @@ This message was produced and distributed by Small Business Online, LLC, <a href
 "
             });
 
-            Console.WriteLine("Tempalte created");
+            Console.WriteLine("Footer Column 3 template created");
         }
 
         #endregion

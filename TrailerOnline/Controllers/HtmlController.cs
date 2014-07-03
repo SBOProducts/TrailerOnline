@@ -17,7 +17,7 @@ namespace TrailerOnline.Controllers
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public ActionResult Index(int Id)
+        public ActionResult Index(Guid Id)
         {
             TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
             HtmlBO model = HtmlBLL.GetHtml(Id, tenant.TenantId);
@@ -26,7 +26,7 @@ namespace TrailerOnline.Controllers
 
         [TenantAuthorization]
         [HttpPost]
-        public ActionResult Save(int Id, string Html)
+        public ActionResult Save(Guid Id, string Html)
         {
             TenantBO tenant = TenantBLL.GetTenant(System.Web.HttpContext.Current);
             HtmlBO data = new HtmlBO() { Content = Html, HtmlId = Id, TenantId = tenant.TenantId };
