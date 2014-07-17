@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend
-// CREATED DATE: 7/3/2014
+// CREATED DATE: 7/17/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -32,19 +32,22 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _PageTitle = new SqlParameter("PageTitle", SqlDbType.VarChar);
             SqlParameter _DisplayToPublic = new SqlParameter("DisplayToPublic", SqlDbType.Bit);
             SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.UniqueIdentifier);
+            SqlParameter _Sequence = new SqlParameter("Sequence", SqlDbType.Int);
             
             _TenantId.Value = DO.TenantId;
             _MenuName.Value = DO.MenuName;
             _PageTitle.Value = DO.PageTitle;
             _DisplayToPublic.Value = DO.DisplayToPublic;
             _HtmlId.Value = DO.HtmlId;
+            _Sequence.Value = DO.Sequence;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _TenantId,
                 _MenuName,
                 _PageTitle,
                 _DisplayToPublic,
-                _HtmlId
+                _HtmlId,
+                _Sequence
             };
 
             return DataCommon.ExecuteScalar("[dbo].[InventoryCategory_Insert]", _params, "dbo");
@@ -63,6 +66,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _PageTitle = new SqlParameter("PageTitle", SqlDbType.VarChar);
             SqlParameter _DisplayToPublic = new SqlParameter("DisplayToPublic", SqlDbType.Bit);
             SqlParameter _HtmlId = new SqlParameter("HtmlId", SqlDbType.UniqueIdentifier);
+            SqlParameter _Sequence = new SqlParameter("Sequence", SqlDbType.Int);
             
             _TenantId.Value = DO.TenantId;
             _CategoryId.Value = DO.CategoryId;
@@ -70,6 +74,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             _PageTitle.Value = DO.PageTitle;
             _DisplayToPublic.Value = DO.DisplayToPublic;
             _HtmlId.Value = DO.HtmlId;
+            _Sequence.Value = DO.Sequence;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _TenantId,
@@ -77,7 +82,8 @@ namespace TrailerOnline.DAL.DAL.dbo
                 _MenuName,
                 _PageTitle,
                 _DisplayToPublic,
-                _HtmlId
+                _HtmlId,
+                _Sequence
             };
 
             return DataCommon.ExecuteScalar("[dbo].[InventoryCategory_Update]", _params, "dbo");
@@ -123,6 +129,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.PageTitle = sr.GetString(sr.GetOrdinal("PageTitle"));
                 obj.DisplayToPublic = sr.GetBoolean(sr.GetOrdinal("DisplayToPublic"));
                 obj.HtmlId = sr.GetGuid(sr.GetOrdinal("HtmlId"));
+                obj.Sequence = sr.GetInt32(sr.GetOrdinal("Sequence"));
                 
 
 
@@ -161,6 +168,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.PageTitle = sr.GetString(sr.GetOrdinal("PageTitle"));
                 obj.DisplayToPublic = sr.GetBoolean(sr.GetOrdinal("DisplayToPublic"));
                 obj.HtmlId = sr.GetGuid(sr.GetOrdinal("HtmlId"));
+                obj.Sequence = sr.GetInt32(sr.GetOrdinal("Sequence"));
                 
 
                 objs.Add(obj);
@@ -201,6 +209,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.PageTitle = sr.GetString(sr.GetOrdinal("PageTitle"));
                 obj.DisplayToPublic = sr.GetBoolean(sr.GetOrdinal("DisplayToPublic"));
                 obj.HtmlId = sr.GetGuid(sr.GetOrdinal("HtmlId"));
+                obj.Sequence = sr.GetInt32(sr.GetOrdinal("Sequence"));
                 
 
                 objs.Add(obj);

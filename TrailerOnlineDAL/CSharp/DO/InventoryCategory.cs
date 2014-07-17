@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend
-// CREATED DATE: 7/3/2014
+// CREATED DATE: 7/17/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -23,6 +23,7 @@ namespace TrailerOnline.DAL.DO.dbo
         public virtual String PageTitle {get; set;}
         public virtual Boolean DisplayToPublic {get; set;}
         public virtual Guid HtmlId {get; set;}
+        public virtual Int32 Sequence {get; set;}
 
     }
 }

@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[Product]    Script Date: 7/3/2014 9:54:44 AM ******/
+/****** Object:  Table [dbo].[Product]    Script Date: 7/17/2014 4:10:15 PM ******/
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 CREATE TABLE [dbo].[Product](
@@ -10,6 +10,7 @@ CREATE TABLE [dbo].[Product](
 	[Description] [varchar](max) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[DisplayToPublic] [bit] NOT NULL,
 	[CreateDate] [datetime] NOT NULL,
+	[Sequence] [int] NOT NULL,
  CONSTRAINT [PK_Product] PRIMARY KEY CLUSTERED 
 (
 	[TenantId] ASC,

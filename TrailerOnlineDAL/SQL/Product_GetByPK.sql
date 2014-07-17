@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 7/3/2014
+-- CREATED DATE: 7/17/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -34,7 +34,8 @@ BEGIN
         [Price],
         [Description],
         [DisplayToPublic],
-        [CreateDate]
+        [CreateDate],
+        [Sequence]
     FROM [dbo].[Product]
     WHERE 
         [TenantId] = @TenantId AND

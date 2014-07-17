@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 7/3/2014
+-- CREATED DATE: 7/17/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -23,7 +23,8 @@ CREATE PROCEDURE [dbo].[Product_Update]
     @Price Decimal(18, 2),
     @Description VarChar(MAX),
     @DisplayToPublic Bit,
-    @CreateDate DateTime
+    @CreateDate DateTime,
+    @Sequence Int
 AS
 
 BEGIN
@@ -39,7 +40,8 @@ BEGIN
         [Price] = @Price,
         [Description] = @Description,
         [DisplayToPublic] = @DisplayToPublic,
-        [CreateDate] = @CreateDate
+        [CreateDate] = @CreateDate,
+        [Sequence] = @Sequence
     WHERE
         [TenantId] = @TenantId AND
         [CategoryId] = @CategoryId AND

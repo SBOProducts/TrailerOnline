@@ -1,5 +1,5 @@
 -- CREATED BY: Nathan Townsend
--- CREATED DATE: 7/3/2014
+-- CREATED DATE: 7/17/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -21,7 +21,8 @@ CREATE PROCEDURE [dbo].[InventoryCategory_Update]
     @MenuName VarChar(60),
     @PageTitle VarChar(100),
     @DisplayToPublic Bit,
-    @HtmlId UniqueIdentifier
+    @HtmlId UniqueIdentifier,
+    @Sequence Int
 AS
 
 BEGIN
@@ -35,7 +36,8 @@ BEGIN
         [MenuName] = @MenuName,
         [PageTitle] = @PageTitle,
         [DisplayToPublic] = @DisplayToPublic,
-        [HtmlId] = @HtmlId
+        [HtmlId] = @HtmlId,
+        [Sequence] = @Sequence
     WHERE
         [TenantId] = @TenantId AND
         [CategoryId] = @CategoryId

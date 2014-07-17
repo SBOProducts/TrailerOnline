@@ -1,5 +1,5 @@
 // CREATED BY: Nathan Townsend
-// CREATED DATE: 7/3/2014
+// CREATED DATE: 7/17/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 // GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -34,6 +34,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Description = new SqlParameter("Description", SqlDbType.VarChar);
             SqlParameter _DisplayToPublic = new SqlParameter("DisplayToPublic", SqlDbType.Bit);
             SqlParameter _CreateDate = new SqlParameter("CreateDate", SqlDbType.DateTime);
+            SqlParameter _Sequence = new SqlParameter("Sequence", SqlDbType.Int);
             
             _CategoryId.Value = DO.CategoryId;
             _ProductId.Value = DO.ProductId;
@@ -42,6 +43,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             _Description.Value = DO.Description;
             _DisplayToPublic.Value = DO.DisplayToPublic;
             _CreateDate.Value = DO.CreateDate;
+            _Sequence.Value = DO.Sequence;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _CategoryId,
@@ -50,7 +52,8 @@ namespace TrailerOnline.DAL.DAL.dbo
                 _Price,
                 _Description,
                 _DisplayToPublic,
-                _CreateDate
+                _CreateDate,
+                _Sequence
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Product_Insert]", _params, "dbo");
@@ -71,6 +74,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Description = new SqlParameter("Description", SqlDbType.VarChar);
             SqlParameter _DisplayToPublic = new SqlParameter("DisplayToPublic", SqlDbType.Bit);
             SqlParameter _CreateDate = new SqlParameter("CreateDate", SqlDbType.DateTime);
+            SqlParameter _Sequence = new SqlParameter("Sequence", SqlDbType.Int);
             
             _TenantId.Value = DO.TenantId;
             _CategoryId.Value = DO.CategoryId;
@@ -80,6 +84,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             _Description.Value = DO.Description;
             _DisplayToPublic.Value = DO.DisplayToPublic;
             _CreateDate.Value = DO.CreateDate;
+            _Sequence.Value = DO.Sequence;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _TenantId,
@@ -89,7 +94,8 @@ namespace TrailerOnline.DAL.DAL.dbo
                 _Price,
                 _Description,
                 _DisplayToPublic,
-                _CreateDate
+                _CreateDate,
+                _Sequence
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Product_Update]", _params, "dbo");
@@ -140,6 +146,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Description = sr.GetString(sr.GetOrdinal("Description"));
                 obj.DisplayToPublic = sr.GetBoolean(sr.GetOrdinal("DisplayToPublic"));
                 obj.CreateDate = sr.GetDateTime(sr.GetOrdinal("CreateDate"));
+                obj.Sequence = sr.GetInt32(sr.GetOrdinal("Sequence"));
                 
 
 
@@ -188,6 +195,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Description = sr.GetString(sr.GetOrdinal("Description"));
                 obj.DisplayToPublic = sr.GetBoolean(sr.GetOrdinal("DisplayToPublic"));
                 obj.CreateDate = sr.GetDateTime(sr.GetOrdinal("CreateDate"));
+                obj.Sequence = sr.GetInt32(sr.GetOrdinal("Sequence"));
                 
 
                 objs.Add(obj);
