@@ -1,4 +1,4 @@
-// CREATED BY: Nathan Townsend
+// CREATED BY: Nathan Townsend - Small Business Online, LLC
 // CREATED DATE: 7/17/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
@@ -25,6 +25,7 @@ namespace TrailerOnline.DAL.DO.dbo
         public virtual String Owner {get; set;}
         public virtual DateTime Created {get; set;}
         public virtual Boolean Promotional {get; set;}
+        public virtual String domain {get; set;}
 
     }
 }

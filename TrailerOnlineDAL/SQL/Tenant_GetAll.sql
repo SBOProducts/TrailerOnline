@@ -1,4 +1,4 @@
--- CREATED BY: Nathan Townsend
+-- CREATED BY: Nathan Townsend - Small Business Online, LLC
 -- CREATED DATE: 7/17/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
@@ -32,7 +32,8 @@ BEGIN
         [Layout],
         [Owner],
         [Created],
-        [Promotional]
+        [Promotional],
+        [domain]
     FROM [dbo].[Tenant]
 
 END

@@ -1,4 +1,4 @@
-// CREATED BY: Nathan Townsend
+// CREATED BY: Nathan Townsend - Small Business Online, LLC
 // CREATED DATE: 7/17/2014
 // DO NOT MODIFY THIS CODE
 // CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
@@ -34,6 +34,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Owner = new SqlParameter("Owner", SqlDbType.NVarChar);
             SqlParameter _Created = new SqlParameter("Created", SqlDbType.DateTime);
             SqlParameter _Promotional = new SqlParameter("Promotional", SqlDbType.Bit);
+            SqlParameter _domain = new SqlParameter("domain", SqlDbType.VarChar);
             
             _Host.Value = DO.Host;
             _Title.Value = DO.Title;
@@ -42,6 +43,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             _Owner.Value = DO.Owner;
             _Created.Value = DO.Created;
             _Promotional.Value = DO.Promotional;
+            _domain.Value = DO.domain;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _Host,
@@ -50,7 +52,8 @@ namespace TrailerOnline.DAL.DAL.dbo
                 _Layout,
                 _Owner,
                 _Created,
-                _Promotional
+                _Promotional,
+                _domain
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Tenant_Insert]", _params, "dbo");
@@ -71,6 +74,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             SqlParameter _Owner = new SqlParameter("Owner", SqlDbType.NVarChar);
             SqlParameter _Created = new SqlParameter("Created", SqlDbType.DateTime);
             SqlParameter _Promotional = new SqlParameter("Promotional", SqlDbType.Bit);
+            SqlParameter _domain = new SqlParameter("domain", SqlDbType.VarChar);
             
             _TenantId.Value = DO.TenantId;
             _Host.Value = DO.Host;
@@ -80,6 +84,7 @@ namespace TrailerOnline.DAL.DAL.dbo
             _Owner.Value = DO.Owner;
             _Created.Value = DO.Created;
             _Promotional.Value = DO.Promotional;
+            _domain.Value = DO.domain;
             
             SqlParameter[] _params = new SqlParameter[] {
                 _TenantId,
@@ -89,7 +94,8 @@ namespace TrailerOnline.DAL.DAL.dbo
                 _Layout,
                 _Owner,
                 _Created,
-                _Promotional
+                _Promotional,
+                _domain
             };
 
             return DataCommon.ExecuteScalar("[dbo].[Tenant_Update]", _params, "dbo");
@@ -134,7 +140,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
                 obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
                 obj.Promotional = sr.GetBoolean(sr.GetOrdinal("Promotional"));
-                
+                if (sr.IsDBNull(sr.GetOrdinal("domain"))) { obj.domain = null; } else { obj.domain = sr.GetString(sr.GetOrdinal("domain")); }
 
 
                 objs.Add(obj);
@@ -174,7 +180,7 @@ namespace TrailerOnline.DAL.DAL.dbo
                 obj.Owner = sr.GetString(sr.GetOrdinal("Owner"));
                 obj.Created = sr.GetDateTime(sr.GetOrdinal("Created"));
                 obj.Promotional = sr.GetBoolean(sr.GetOrdinal("Promotional"));
-                
+                if (sr.IsDBNull(sr.GetOrdinal("domain"))) { obj.domain = null; } else { obj.domain = sr.GetString(sr.GetOrdinal("domain")); }
 
                 objs.Add(obj);
             }
