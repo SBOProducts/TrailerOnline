@@ -24,7 +24,16 @@
 
     @Html.Partial("_TopMenu")
 
-    @RenderBody()
+    <div class="row">
+        <div class="large-3 columns">
+            @Html.Partial("_InventoryMenu")
+        </div>
+        <div class="large-9 columns">
+            @RenderBody()
+        </div>
+    </div>
+
+    
 
     @Html.Partial("_Footer")
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

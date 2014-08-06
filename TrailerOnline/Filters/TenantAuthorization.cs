@@ -10,6 +10,14 @@ namespace TrailerOnline.Filters
     public class TenantAuthorization: AuthorizeAttribute, IAuthorizationFilter
     {
 
+        /// <summary>
+        /// Prevents anyone other than the tenant from accessing an action on a controller. 
+        /// </summary>
+        /// <param name="filterContext"></param>
+        /// <remarks>
+        /// This does not stop Tenant A accessing Tenant B's data within their own form
+        /// This does stop Tenant A from getting to Tenant B's form
+        /// </remarks>
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
             System.Security.Principal.IPrincipal user = HttpContext.Current.User;
@@ -23,5 +31,6 @@ namespace TrailerOnline.Filters
             if (!isOwner)
                 throw new UnauthorizedAccessException();
         }
+
     }
 }

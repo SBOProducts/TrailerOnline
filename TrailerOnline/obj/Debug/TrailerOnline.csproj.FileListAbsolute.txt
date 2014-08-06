@@ -176,3 +176,17 @@ C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\bin\zh-Hant\System.
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.csprojResolveAssemblyReference.cache
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.dll
 C:\Users\Nathan\Documents\GitHub\TrailerOnline\TrailerOnline\obj\Debug\TrailerOnline.pdb
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\Microsoft.Data.Services.Client.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\Microsoft.WindowsAzure.Configuration.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\Microsoft.WindowsAzure.Storage.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\Microsoft.Data.Services.Client.xml
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\Microsoft.WindowsAzure.Storage.xml
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\de\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\es\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\fr\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\it\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\ja\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\ko\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\ru\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\zh-Hans\Microsoft.Data.Services.Client.resources.dll
+C:\Users\cb0290\Documents\GitHub\TrailerOnline\TrailerOnline\bin\zh-Hant\Microsoft.Data.Services.Client.resources.dll

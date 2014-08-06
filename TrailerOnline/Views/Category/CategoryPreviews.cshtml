@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CategoryBO>
+
+
+@foreach (CategoryBO category in Model)
+{
+    <div class="row" style="cursor:pointer;" onclick="javascript:location.href='@Url.Action("Details", "Category", new { Id = category.CategoryId })'">
+        <div class="large-4 columns">
+            <img src="@Url.Content("~/Files/ImageNotFound-300.jpg")" alt="@category.MenuName" />
+        </div>
+        <div class="large-8 columns">
+            <h3>@category.MenuName</h3>
+        </div>
+    </div>
+    <hr />
+}
+
+@if (Model.Count() == 0)
+{
+<h3>
+    <em>No Categories Found</em>
+</h3>
+}
+

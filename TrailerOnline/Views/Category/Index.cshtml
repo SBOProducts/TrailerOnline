@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Inventory";
+}
+
+@Html.Action("Index", "Html", new { Id = new Guid("d98a214b-1a8d-4d88-9313-c9c59da300fd")})
+
+@if (TenantBLL.CurrentTenant.IsOwner(User.Identity.Name))
+{
+    @Html.ActionLink("Add New Category", "Create", "Category", null, new { @class = "tiny button success" })
+}
+
+<ul class="side-nav">
+    @{Html.RenderAction("CategoryPreviews", "Category");}
+</ul>

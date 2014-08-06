@@ -1,0 +1,26 @@
+﻿@model CategoryVM
+
+@{
+    ViewBag.Title = Model.PageTitle;
+}
+
+@Html.Action("Index", "Html", new { Id = Model.HtmlId})
+
+@if (CategoryBLL.TenantOwnsCategory(Model.CategoryId))
+{
+    <ul class="button-group">
+        <li>@Html.ActionLink("Add Product", "Create", "Product", new { category = Model.CategoryId, imgkey = Guid.NewGuid().ToString() }, new { @class = "small button success" })</li>
+        <li>@Html.ActionLink("Edit Category", "Edit", new { id = Model.CategoryId }, new { @class = "small button success" })</li>
+        <li>@Html.ActionLink("Delete Category", "Delete", new { id = Model.CategoryId }, new { @class = "small button alert confirm" })</li>
+    </ul>
+}
+
+<div class="product-container">
+    @*{Html.RenderPartial("~/Views/Product/Grid.cshtml", Model.Products.ToArray());}*@
+</div>
+
+
+
+<p>
+    @Html.ActionLink("Back to Catalog", "Index")
+</p>

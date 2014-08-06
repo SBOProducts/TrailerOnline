@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[InventoryCategory]    Script Date: 7/17/2014 9:14:46 PM ******/
+/****** Object:  Table [dbo].[InventoryCategory]    Script Date: 7/23/2014 8:14:40 AM ******/
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 CREATE TABLE [dbo].[InventoryCategory](
@@ -16,7 +16,7 @@ CREATE TABLE [dbo].[InventoryCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
-/****** Object:  Index [InventoryCategory_TenantId]    Script Date: 7/17/2014 9:14:46 PM ******/
+/****** Object:  Index [InventoryCategory_TenantId]    Script Date: 7/23/2014 8:14:40 AM ******/
 CREATE NONCLUSTERED INDEX [InventoryCategory_TenantId] ON [dbo].[InventoryCategory]
 (
 	[TenantId] ASC

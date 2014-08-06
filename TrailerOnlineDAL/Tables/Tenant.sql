@@ -1,4 +1,4 @@
-/****** Object:  Table [dbo].[Tenant]    Script Date: 7/17/2014 9:14:46 PM ******/
+/****** Object:  Table [dbo].[Tenant]    Script Date: 7/25/2014 10:09:43 AM ******/
 SET ANSI_NULLS ON
 SET QUOTED_IDENTIFIER ON
 CREATE TABLE [dbo].[Tenant](
@@ -10,7 +10,6 @@ CREATE TABLE [dbo].[Tenant](
 	[Owner] [nvarchar](56) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Created] [datetime] NOT NULL,
 	[Promotional] [bit] NOT NULL,
-	[domain] [varchar](50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
  CONSTRAINT [PK_Tenant] PRIMARY KEY CLUSTERED 
 (
 	[TenantId] ASC

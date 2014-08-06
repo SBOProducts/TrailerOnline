@@ -4,6 +4,11 @@
 
 <div class="row">
     <div class="large-12 columns">
-        <h2>Product Index</h2>
+        <h2>Inventory</h2>
+
+        @if (TenantBLL.CurrentTenant.IsOwner(User.Identity.Name))
+        {
+            
+        }
     </div>
 </div>

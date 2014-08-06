@@ -1,0 +1,11 @@
+﻿@model CategoryVM
+@{
+    ViewBag.Title = "Delete Category";
+}
+
+<h2>Delete @Model.MenuName</h2>
+
+<p>Press the Delete button below to permenantly delete the <b>@Model.MenuName</b> category including all products and their images. This action can not be undone.</p>
+
+@Html.ActionLink("Confirm Delete", "DeleteConfirmed", "Category", new { Id = Model.CategoryId }, new { @class = "small button alert" })
+@Html.ActionLink("Cancel", "Details", "Category", new { Id = Model.CategoryId }, new { @class = "small button success" })

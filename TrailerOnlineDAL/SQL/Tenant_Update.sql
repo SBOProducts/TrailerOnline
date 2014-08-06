@@ -1,5 +1,5 @@
--- CREATED BY: Nathan Townsend - Small Business Online, LLC
--- CREATED DATE: 7/17/2014
+-- CREATED BY: Nathan Townsend
+-- CREATED DATE: 7/25/2014
 -- DO NOT MODIFY THIS CODE
 -- CHANGES WILL BE LOST WHEN THE GENERATOR IS RUN AGAIN
 -- GENERATION TOOL: Dalapi Code Generator (DalapiPro.com)
@@ -23,8 +23,7 @@ CREATE PROCEDURE [dbo].[Tenant_Update]
     @Layout VarChar(50),
     @Owner NVarChar(56),
     @Created DateTime,
-    @Promotional Bit,
-    @domain VarChar(50) = null
+    @Promotional Bit
 AS
 
 BEGIN
@@ -40,8 +39,7 @@ BEGIN
         [Layout] = @Layout,
         [Owner] = @Owner,
         [Created] = @Created,
-        [Promotional] = @Promotional,
-        [domain] = @domain
+        [Promotional] = @Promotional
     WHERE
         [TenantId] = @TenantId
 

@@ -28,6 +28,7 @@ namespace TrailerOnline.BLL.BusinessObjects
             this.Content = DataObject.Content;
         }
 
+
         /// <summary>
         /// Gets the data object encapsulated by this business object
         /// </summary>
